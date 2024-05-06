@@ -11,8 +11,13 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.35.1",
+    "@tanstack/react-router": "^1.31.20",
+    "axios": "^1.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-intl": "^6.6.6",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.32.1",
