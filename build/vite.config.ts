@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 import plugins from './plugins';
+import cssOptions from './cssOptions';
 
 export default defineConfig({
   root: 'src',
@@ -13,6 +14,7 @@ export default defineConfig({
   },
   publicDir: 'assets/public',
   plugins,
+  css: cssOptions,
   build: {
     outDir: `${process.cwd()}/dist`,
     emptyOutDir: true,

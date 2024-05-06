@@ -29,6 +29,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.2.5",
+    "sass": "^1.76.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-checker": "^0.6.4",
