@@ -12,13 +12,13 @@ body {
 }
 
 .contentPlaceholder_gw2ni {
-  @include mixins.full-page-height;
+  @include full-page-height;
   position: relative;
   display: flex;
-  min-width: sizes.$min-width;
-  max-width: sizes.$max-width;
-  gap: sizes.$gap-small;
-  padding: sizes.$gap-small;
+  min-width: var(--size-width-xs);
+  max-width: var(--size-width-xl);
+  gap: var(--space-light-md);
+  padding: var(--space-light-md);
   margin: auto;
   overflow: hidden;
 
@@ -27,8 +27,13 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 2;
-    background-image: linear-gradient(-45deg, transparent 40%, rgba(colors.$bck-page, 0.4) 50%, transparent 60%);
+    z-index: 1;
+    background-image: linear-gradient(
+      -45deg,
+      transparent 40%,
+      color-mix(in srgb, var(--color-neutral-weak-max), transparent 50%),
+      transparent 60%
+    );
     background-size: 300%;
     animation: shine_gw2ni 1s infinite;
 
@@ -48,7 +53,7 @@ body {
 .contentPlaceholder_main_gw2ni {
   display: flex;
   flex-direction: column;
-  gap: sizes.$gap-small;
+  gap: var(--space-light-md);
 }
 
 .contentPlaceholder_navbar_gw2ni {
@@ -60,8 +65,8 @@ body {
 }
 
 .contentPlaceholder_headerBox_gw2ni {
-  height: sizes.$header-height;
-  background-color: colors.$bck-light;
+  height: var(--space-heavy-xl);
+  background-color: var(--color-neutral-weak-30);
 }
 
 .contentPlaceholder_contentBox_gw2ni {
@@ -69,17 +74,29 @@ body {
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  background-color: colors.$bck-light;
+  background-color: var(--color-neutral-weak-30);
+}
+
+.contentPlaceholder_logoContainer_gw2ni {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-heavy-xl);
+  height: var(--space-heavy-xl);
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, var(--color-neutral-weak-max), var(--color-neutral-weak-30));
+  box-shadow:
+    0px 1px 6px var(--color-neutral-weak-10),
+    inset 0px 2px 3px var(--color-neutral-weak-max);
 }
 
 .contentPlaceholder_logo_gw2ni {
-  width: sizes.$header-height;
-  opacity: 0.5;
+  width: 50%;
 }
 
-@media #{sizes.$above-medium-screen} {
+@media #{$media-md-above} {
   .contentPlaceholder_navbar_gw2ni {
-    width: min(30%, sizes.$navbar-max-width);
     display: flex;
+    width: min(33%, var(--size-width-xs));
   }
 }

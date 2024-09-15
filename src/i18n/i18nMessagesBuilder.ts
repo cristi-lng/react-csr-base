@@ -14,21 +14,18 @@ class I18nMessagesBuilder {
 
   async buildForLocale(locale: Locale): Promise<I18nMessages> {
     return locale == DEFAULT_LOCALE
-      ? { ...this.buildDefault() }
+      ? this.buildDefault()
       : // we included the fallback to the default locale messages
-        // to overcome the situation when a particular message is missing from the translation file
-        { ...this.buildDefault(), ...(await this.#loadForLocale(locale)) };
+        // to overcome the situation when a particular message is missing from the non-default translation file
+        { ...this.buildDefault(), ...(await this.#importForLocale(locale)).default };
   }
 
-  async #loadForLocale(locale: Exclude<Locale, typeof DEFAULT_LOCALE>) {
-    let messagesModule;
+  async #importForLocale(locale: Exclude<Locale, typeof DEFAULT_LOCALE>) {
     switch (locale) {
       case 'fr_FR':
-        messagesModule = import('src/assets/i18n/i18n-fr_FR.json');
-        break;
+        return import('src/assets/i18n/i18n-fr_FR.json');
       // other locales that you support
     }
-    return messagesModule && (await messagesModule).default;
   }
 }
 

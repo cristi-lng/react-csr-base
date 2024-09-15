@@ -1,0 +1,27 @@
+:root {
+  --font-primary: Quicksand, sans-serif;
+
+  // used to control all font sizes
+  --font-size-base: 1rem;
+  --font-scale-ratio: 1.125;
+
+  --font-size-xs: calc(var(--font-size-sm) / var(--font-scale-ratio)); /* 12.64px */
+  --font-size-sm: calc(var(--font-size-md) / var(--font-scale-ratio)); /* 14.22px */
+  --font-size-md: var(--font-size-base); /* 16px */
+  --font-size-lg: calc(var(--font-size-md) * var(--font-scale-ratio)); /* 18px */
+  --font-size-xl: calc(var(--font-size-lg) * var(--font-scale-ratio)); /* 20.25px */
+  --font-size-xxl: calc(var(--font-size-xl) * var(--font-scale-ratio)); /* 22.78px */
+  --font-size-hg: calc(var(--font-size-xxl) * var(--font-scale-ratio)); /* 25.63px */
+  --font-size-xh: calc(var(--font-size-hg) * var(--font-scale-ratio)); /* 28.83px */
+  --font-size-xxh: calc(var(--font-size-xh) * var(--font-scale-ratio)); /* 32.44px */
+
+  --font-weight-normal: 400;
+  --font-weight-semiBold: 600;
+  --font-weight-bold: 700;
+
+  --font-lineHeight-xs: 1;
+  --font-lineHeight-sm: 1.25;
+  --font-lineHeight-md: 1.5;
+  --font-lineHeight-lg: 1.75;
+  --font-lineHeight-xl: 2;
+}

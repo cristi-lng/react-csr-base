@@ -3,6 +3,7 @@ import path from 'path';
 
 import plugins from './plugins';
 import cssOptions from './cssOptions';
+import buildOptions from './buildOptions';
 
 export default defineConfig({
   root: 'src',
@@ -15,10 +16,7 @@ export default defineConfig({
   publicDir: 'assets/public',
   plugins,
   css: cssOptions,
-  build: {
-    outDir: `${process.cwd()}/dist`,
-    emptyOutDir: true,
-  },
+  build: buildOptions,
   server: {
     open: true,
   },

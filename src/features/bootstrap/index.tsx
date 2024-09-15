@@ -10,7 +10,7 @@ const rootRoute = createRootRoute({
 const layoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: 'layout',
-  component: () => 'Nothing yet!',
+  component: Outlet,
 });
 
 export { rootRoute, layoutRoute };

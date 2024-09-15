@@ -3,14 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!--
+      The minimum set of favicons to support most of modern devices
+      https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs 
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="./assets/images/shoppy-logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- We want to preload main fonts to avoid fallbacks and increase the perceived speed of the application -->
+    <!--
+      I recommend you to use variable fonts if you need to support multiple styles for a family
+      https://web.dev/articles/variable-fonts
+    -->
+    <link
+      rel="preload"
+      as="font"
+      href="./assets/fonts/quicksand-variable.woff2"
+      type="font/woff2"
+      crossorigin="crossorigin"
+    />
+    <link rel="preload" as="font" href="./assets/fonts/iconfont.woff2" type="font/woff2" crossorigin="crossorigin" />
+
+    <!-- We import the variable system here instead of global.scss, because we want to use it in content placeholder -->
     <style>
-      @import url('./assets/styles/contentPlaceholder.scss');
+      @import url('./styles/varSystem/index.scss');
+      @import url('./styles/contentPlaceholder.scss');
     </style>
-    <title>React CSR Base</title>
+
+    <title>Shoppy</title>
   </head>
+
   <body>
     <div id="root"></div>
+
+    <!-- 
+      We display the content placeholder whenever the root div is empty.
+      This is particularly important at initial page load to see something as soon as possible.
+      The user will see this placeholder until the app is loaded. It's a bad UX to force the user to stare at an empty page.
+    -->
     <div class="contentPlaceholder_gw2ni">
       <div class="contentPlaceholder_navbar_gw2ni">
         <div class="contentPlaceholder_headerBox_gw2ni"></div>
@@ -19,10 +52,13 @@
       <div class="contentPlaceholder_main_gw2ni">
         <div class="contentPlaceholder_headerBox_gw2ni"></div>
         <div class="contentPlaceholder_contentBox_gw2ni">
-          <img class="contentPlaceholder_logo_gw2ni" src="./assets/images/shoppy-logo.svg" />
+          <div class="contentPlaceholder_logoContainer_gw2ni">
+            <img class="contentPlaceholder_logo_gw2ni" src="./assets/images/shoppy-logo.svg" />
+          </div>
         </div>
       </div>
     </div>
+
     <script type="module" src="./main.tsx"></script>
   </body>
 </html>

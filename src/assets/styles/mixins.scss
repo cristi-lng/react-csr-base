@@ -1,7 +1,0 @@
-@mixin full-page-height {
-  min-height: 100dvh;
-  // iOS fix
-  @supports (-webkit-touch-callout: none) {
-    min-height: -webkit-fill-available;
-  }
-}

@@ -1,11 +1,12 @@
 import { rootRoute, layoutRoute } from '~bootstrap';
+import { shoppingListsRoute } from '~shoppingLists';
 
 /**
- * Create route tree. It looks like this:
+ * Here we create the route tree. It looks like this:
  * - root route
  *    - layout route
  *        - <page route>
  */
-const routeTree = rootRoute.addChildren([layoutRoute]);
+const routeTree = rootRoute.addChildren([layoutRoute.addChildren([shoppingListsRoute])]);
 
 export { routeTree };

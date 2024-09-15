@@ -1,0 +1,8 @@
+:root {
+  --size-width-xs: #{$media-breakpoint-xs}; /* 320px */
+  --size-width-sm: #{$media-breakpoint-sm}; /* 480px */
+  --size-width-md: #{$media-breakpoint-md}; /* 768px */
+  --size-width-lg: #{$media-breakpoint-lg}; /* 1024px */
+  --size-width-xl: #{$media-breakpoint-xl}; /* 1440px */
+  --size-width-xxl: #{$media-breakpoint-xxl}; /* 1920px */
+}

@@ -7,10 +7,20 @@ import { DEFAULT_LOCALE } from 'src/constants/constants';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { i18nMessagesBuilder } from 'src/i18n/i18nMessagesBuilder';
 
+/**
+ * This is the place to manage internationalization.
+ * It exports the I18nProvider component to be included in the react tree and the intl object to be used outside react
+ */
+
 const cache = createIntlCache();
 let intl: IntlShape;
 
 function I18nProvider({ children }: PropsWithChildren) {
+  /**
+   * When the locale is changed to non-default, the messages are loaded in the background and the app is not blocked
+   * until they arrive. This means that on slow networks it might take some time until the page is translated.
+   * But this is desired behavior.
+   */
   const locale = useSessionStore((state) => state.locale);
   const intlLocale = locale.replace('_', '-');
   const { isSuccess, data: messages } = useQuery(messagesQueryOptions());

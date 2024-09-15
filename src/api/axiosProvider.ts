@@ -1,15 +1,30 @@
 // eslint-disable-next-line no-restricted-imports
 import axios from 'axios';
 
+import { APIError } from 'src/types/apiError';
+
 /**
- * Here you can configure the axios instance the way you need it
- * https://axios-http.com/docs/instance
+ * Here we create the axios instance that should be used whenever you need to do an API call.
+ * Do not import axios from the original package in your code.
+ */
+
+/**
+ * You can configure the axios defaults here
+ * https://axios-http.com/docs/config_defaults
  */
 const axiosInstance = axios.create();
 
 /**
- * You can add interceptors if you have some common logic that needs to run on every request or response
+ * You can add interceptors if you have some common logic that needs to run on every request or response.
  * https://axios-http.com/docs/interceptors
+ *
+ * The following interceptor convert AxiosError to APIError because we don't want to expose axios objects outside.
  */
+axiosInstance.interceptors.response.use(null, (error) => {
+  const finalError = axios.isAxiosError(error)
+    ? new APIError({ status: error.response?.status, message: error.message })
+    : error;
+  return Promise.reject(finalError);
+});
 
 export { axiosInstance as axios };

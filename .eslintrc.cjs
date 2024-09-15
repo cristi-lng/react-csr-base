@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true, es2022: true },
+  parserOptions: { ecmaVersion: 2023 },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -39,6 +40,10 @@ module.exports = {
       },
     },
   },
+  /**
+   * Here you can impose custom eslint rules that you want to be followed across the app.
+   * The following rules are the minimum that I would recommend.
+   */
   rules: {
     'no-restricted-imports': [
       'error',

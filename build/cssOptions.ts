@@ -4,9 +4,8 @@ export default {
   preprocessorOptions: {
     scss: {
       additionalData: `
-        @use "src/assets/styles/sizes.scss";
-        @use "src/assets/styles/colors.scss";
-        @use "src/assets/styles/mixins.scss";
+        @use "src/styles/preprocessor/media.scss" as *;
+        @use "src/styles/preprocessor/mixins.scss" as *;
       `,
     },
   },

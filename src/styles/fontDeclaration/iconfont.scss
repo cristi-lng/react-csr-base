@@ -1,0 +1,67 @@
+@font-face {
+  font-family: Iconfont;
+  src: url('src/assets/fonts/iconfont.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}
+
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  font-family: Iconfont;
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-th-list:before {
+  content: '\e800';
+}
+
+.icon-tag:before {
+  content: '\e801';
+}
+
+.icon-cog:before {
+  content: '\e802';
+}
+
+.icon-search:before {
+  content: '\e803';
+}
+
+.icon-down-open:before {
+  content: '\e804';
+}
+
+.icon-up-open:before {
+  content: '\e805';
+}
+
+.icon-fast-food:before {
+  content: '\e815';
+}
+
+.icon-menu:before {
+  content: '\f0c9';
+}
+
+.icon-left:before {
+  content: '\f177';
+}

@@ -5,6 +5,10 @@ import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
 /**
  * Create code checker plugin
+ *
+ * I used this plugin to see all errors reported in dev mode as well (typescript, eslint)
+ * It runs in parallel with the build and serve process so it shouldn't slow you down
+ * https://vite-plugin-checker.netlify.app/
  */
 function createChecker() {
   return checker({
@@ -16,6 +20,9 @@ function createChecker() {
 
 /**
  * Move JS and CSS imports in HTML to the end of the body
+ *
+ * I do this to avoid blocking the rendering of the index.html,
+ * so that the content placeholder can be displayed immediately
  */
 function moveJsCssToBody(): PluginOption {
   const toMoveRegex = /<script.*\.js.*<\/script>|<link.*\.css.*>/g;

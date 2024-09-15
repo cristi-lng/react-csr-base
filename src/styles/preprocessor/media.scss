@@ -1,0 +1,13 @@
+$media-breakpoint-xs: 20rem; /* 320px */
+$media-breakpoint-sm: 30rem; /* 480px */
+$media-breakpoint-md: 48rem; /* 768px */
+$media-breakpoint-lg: 64rem; /* 1024px */
+$media-breakpoint-xl: 90rem; /* 1440px */
+$media-breakpoint-xxl: 120rem; /* 1920px */
+
+$media-xs-above: '(min-width: #{$media-breakpoint-xs})';
+$media-sm-above: '(min-width: #{$media-breakpoint-sm})';
+$media-md-above: '(min-width: #{$media-breakpoint-md})';
+$media-lg-above: '(min-width: #{$media-breakpoint-lg})';
+$media-xl-above: '(min-width: #{$media-breakpoint-xl})';
+$media-xxl-above: '(min-width: #{$media-breakpoint-xxl})';

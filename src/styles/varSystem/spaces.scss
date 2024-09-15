@@ -1,0 +1,26 @@
+:root {
+  // used to control all spaces
+  --space-base: 1rem;
+
+  --space-light-xxs: calc(0.25 * var(--space-base)); /* 4px */
+  --space-light-xs: calc(0.5 * var(--space-base)); /* 8px */
+  --space-light-sm: calc(0.75 * var(--space-base)); /* 12px */
+  --space-light-md: var(--space-base); /* 16px */
+  --space-light-lg: calc(1.25 * var(--space-base)); /* 20px */
+  --space-light-xl: calc(1.5 * var(--space-base)); /* 24px */
+  --space-light-xxl: calc(1.75 * var(--space-base)); /* 28px */
+  --space-light-hg: calc(2 * var(--space-base)); /* 32px */
+  --space-light-xh: calc(2.25 * var(--space-base)); /* 36px */
+  --space-light-xxh: calc(2.5 * var(--space-base)); /* 40px */
+
+  --space-heavy-xxs: calc(3 * var(--space-base)); /* 48px */
+  --space-heavy-xs: calc(3.5 * var(--space-base)); /* 56px */
+  --space-heavy-sm: calc(4 * var(--space-base)); /* 64px */
+  --space-heavy-md: calc(4.5 * var(--space-base)); /* 72px */
+  --space-heavy-lg: calc(5 * var(--space-base)); /* 80px */
+  --space-heavy-xl: calc(6 * var(--space-base)); /* 96px */
+  --space-heavy-xxl: calc(7 * var(--space-base)); /* 112px */
+  --space-heavy-hg: calc(8 * var(--space-base)); /* 128px */
+  --space-heavy-xh: calc(9 * var(--space-base)); /* 144px */
+  --space-heavy-xxh: calc(10 * var(--space-base)); /* 160px */
+}

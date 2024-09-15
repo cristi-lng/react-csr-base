@@ -1,0 +1,13 @@
+@use 'src/styles/fontDeclaration/quicksand.scss';
+@use 'src/styles/fontDeclaration/iconfont.scss';
+@use 'src/styles/generic/reset.scss';
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-neutral-strong-20);
+  -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+  color: var(--color-neutral-base);
+}

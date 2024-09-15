@@ -9,4 +9,4 @@ type Account = {
   readonly locale?: Locale;
 };
 
-export type { Account, AccountRole };
+export { type Account, type AccountRole };
