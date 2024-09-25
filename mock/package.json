@@ -1,0 +1,11 @@
+{
+  "name": "mocked-backend",
+  "description": "Mocked backend to serve the demo app",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "json-server --watch api.json --port 5000 --delay 1000"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}
