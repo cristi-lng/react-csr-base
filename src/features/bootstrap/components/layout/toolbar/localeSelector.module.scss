@@ -1,0 +1,19 @@
+.localeSelector {
+  &_trigger {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-light-xs);
+  }
+
+  &_option {
+    padding: var(--space-light-xs);
+  }
+}
+
+@media #{$media-md-above} {
+  .localeSelector {
+    &_trigger {
+      gap: var(--space-light-md);
+    }
+  }
+}

@@ -30,38 +30,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-th-list:before {
+.icon-brand:before {
   content: '\e800';
 }
 
-.icon-tag:before {
+.icon-menu:before {
   content: '\e801';
 }
 
-.icon-cog:before {
+.icon-close:before {
   content: '\e802';
 }
 
-.icon-search:before {
+.icon-error:before {
   content: '\e803';
 }
 
-.icon-down-open:before {
+.icon-list:before {
   content: '\e804';
 }
 
-.icon-up-open:before {
+.icon-fast-food:before {
   content: '\e805';
 }
 
-.icon-fast-food:before {
-  content: '\e815';
+.icon-tags:before {
+  content: '\e806';
 }
 
-.icon-menu:before {
-  content: '\f0c9';
+.icon-cog:before {
+  content: '\e807';
+}
+
+.icon-search:before {
+  content: '\e808';
+}
+
+.icon-down:before {
+  content: '\e809';
+}
+
+.icon-up:before {
+  content: '\e810';
 }
 
 .icon-left:before {
-  content: '\f177';
+  content: '\e811';
 }

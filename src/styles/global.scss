@@ -2,9 +2,15 @@
 @use 'src/styles/fontDeclaration/iconfont.scss';
 @use 'src/styles/generic/reset.scss';
 
+* {
+  scrollbar-color: var(--color-neutral-weak-10) var(--color-neutral-weak-max);
+  scrollbar-width: thin;
+}
+
 body {
   font-family: var(--font-primary);
-  color: var(--color-neutral-strong-20);
+  font-size: var(--font-size-md);
+  color: var(--color-text-base);
   -webkit-font-smoothing: antialiased;
 }
 

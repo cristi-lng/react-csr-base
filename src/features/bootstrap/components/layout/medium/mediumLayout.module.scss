@@ -1,0 +1,77 @@
+.mediumLayout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &_body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-light-md);
+    overflow: auto;
+  }
+
+  &_menuPanel {
+    @include absolute-fit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-heavy-xxs);
+    padding: var(--space-light-md);
+    overflow: auto;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-color: color-mix(in srgb, var(--color-neutral-weak-max), transparent 20%);
+
+    &.open {
+      animation: fade-in-up 0.2s forwards;
+    }
+
+    &.close {
+      animation: fade-out-down 0.2s forwards;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        transform: translateY(var(--space-heavy-hg));
+        opacity: 0;
+      }
+    }
+
+    @keyframes fade-out-down {
+      to {
+        transform: translateY(var(--space-heavy-hg));
+        opacity: 0;
+      }
+    }
+  }
+
+  &_menuBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-light-md);
+    border-top: 1px solid var(--color-neutral-weak-20);
+  }
+
+  &_currentSection {
+    display: flex;
+    align-items: center;
+    gap: var(--space-light-md);
+  }
+
+  &_menuToggle {
+    padding: var(--space-light-md);
+    margin: calc(0px - var(--space-light-md));
+    font-size: var(--font-size-xl);
+    border: none;
+    background: none;
+  }
+}

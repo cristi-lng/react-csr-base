@@ -1,1 +1,14 @@
-{}
+{
+  "admin": "Admin",
+  "categories": "Categories",
+  "genericError.brief": "An error occurred. Please try again.",
+  "genericError.contact": "If the error persists please contact <a>customer support</a>.",
+  "genericError.details": "Please try to perform your last action again.",
+  "genericError.title": "An error occurred",
+  "logout": "Logout",
+  "products": "Products",
+  "regular": "Regular",
+  "searchForAnything": "Search for anything",
+  "settings": "Settings",
+  "shoppingLists": "Shopping Lists"
+}

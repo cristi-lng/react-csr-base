@@ -1,9 +1,11 @@
 :root {
-  --color-primary-strong-20: color-mix(in srgb, var(--color-primary-base) 50%, var(--color-neutral-strong-max));
-  --color-primary-strong-10: color-mix(in srgb, var(--color-primary-base) 75%, var(--color-neutral-strong-max));
+  --color-primary-strong-30: color-mix(in srgb, var(--color-primary-base) 12%, var(--color-neutral-strong-max));
+  --color-primary-strong-20: color-mix(in srgb, var(--color-primary-base) 25%, var(--color-neutral-strong-max));
+  --color-primary-strong-10: color-mix(in srgb, var(--color-primary-base) 50%, var(--color-neutral-strong-max));
   --color-primary-base: #64872a;
-  --color-primary-weak-10: color-mix(in srgb, var(--color-primary-base) 75%, var(--color-neutral-weak-max));
-  --color-primary-weak-20: color-mix(in srgb, var(--color-primary-base) 50%, var(--color-neutral-weak-max));
+  --color-primary-weak-10: color-mix(in srgb, var(--color-primary-base) 50%, var(--color-neutral-weak-max));
+  --color-primary-weak-20: color-mix(in srgb, var(--color-primary-base) 25%, var(--color-neutral-weak-max));
+  --color-primary-weak-30: color-mix(in srgb, var(--color-primary-base) 12%, var(--color-neutral-weak-max));
 
   --color-neutral-strong-max: #000000;
   --color-neutral-strong-30: color-mix(in srgb, var(--color-neutral-base) 12%, var(--color-neutral-strong-max));
@@ -14,4 +16,6 @@
   --color-neutral-weak-20: color-mix(in srgb, var(--color-neutral-base) 25%, var(--color-neutral-weak-max));
   --color-neutral-weak-30: color-mix(in srgb, var(--color-neutral-base) 12%, var(--color-neutral-weak-max));
   --color-neutral-weak-max: #ffffff;
+
+  --color-text-base: var(--color-neutral-strong-20);
 }

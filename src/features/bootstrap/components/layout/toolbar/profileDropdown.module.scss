@@ -1,0 +1,41 @@
+.profileDropdown {
+  &_trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-light-md);
+    padding: var(--space-light-xs);
+  }
+
+  &_avatar {
+    display: none;
+  }
+
+  &_accountInfo {
+    line-height: var(--font-lineHeight-sm);
+  }
+
+  &_accountRole {
+    font-size: var(--font-size-xs);
+    color: var(--color-neutral-base);
+  }
+
+  &_triggerIcon {
+    margin-left: auto;
+  }
+
+  &_option {
+    padding: var(--space-light-xs);
+  }
+}
+
+@media #{$media-md-above} {
+  .profileDropdown {
+    &_avatar {
+      display: block;
+      height: var(--space-heavy-xxs);
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+    }
+  }
+}
