@@ -3,7 +3,7 @@
   "description": "Mocked backend to serve the demo app",
   "version": "0.1.0",
   "scripts": {
-    "start": "json-server --watch api.json --port 5000 --delay 1000"
+    "start": "json-server --watch api.json --port 5001 --delay 500"
   },
   "dependencies": {
     "json-server": "^0.17.4"

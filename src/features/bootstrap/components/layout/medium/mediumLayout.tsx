@@ -13,6 +13,7 @@ function MediumLayout() {
   const {
     elementState: menuState,
     toggleElement: toggleMenu,
+    hideElement: hideMenu,
     afterElementAnimation: afterMenuAnimation,
   } = useAnimatedVisibility();
 
@@ -30,7 +31,7 @@ function MediumLayout() {
             className={classNames(classes.mediumLayout_menuPanel, classes[menuState])}
             onAnimationEnd={afterMenuAnimation}
           >
-            <Navbar />
+            <Navbar hideMenu={hideMenu} />
             <Toolbar />
           </div>
         )}

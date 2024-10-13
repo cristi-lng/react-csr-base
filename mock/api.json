@@ -1,6 +1,7 @@
 {
   "account": {
     "name": "John Doe",
-    "role": "ADMIN"
+    "role": "ADMIN",
+    "locale": "en_US"
   }
 }

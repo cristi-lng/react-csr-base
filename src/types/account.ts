@@ -6,7 +6,7 @@ type Account = {
   readonly name: string;
   readonly avatar?: string;
   readonly role: AccountRole;
-  readonly locale?: Locale;
+  readonly locale: Locale;
 };
 
 export { type Account, type AccountRole };

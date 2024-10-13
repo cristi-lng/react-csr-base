@@ -10,5 +10,7 @@
   "regular": "Regular",
   "searchForAnything": "Search for anything",
   "settings": "Settings",
-  "shoppingLists": "Shopping Lists"
+  "shoppingLists": "Shopping Lists",
+  "specificError.details": "This is just an example of a specific error thrown from the route",
+  "specificError.title": "Specific error"
 }

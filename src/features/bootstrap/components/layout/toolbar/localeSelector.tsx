@@ -23,7 +23,7 @@ function LocaleSelector() {
       )}
       options={() =>
         LOCALE_OPTIONS.map((localeOption) => (
-          <div className={classes.localeSelector_option} onClick={() => {}}>
+          <div className={classes.localeSelector_option} onClick={() => localeService.changeLocale(localeOption.name)}>
             {localeOption.label}
           </div>
         ))

@@ -1,6 +1,8 @@
 import { createRouter, RouterProvider as TanstackRouterProvider } from '@tanstack/react-router';
 
 import { routeTree } from 'src/router/routesConfig';
+import { ErrorBoundary } from 'src/components/errorBoundary/errorBoundary';
+import { SectionName } from '~bootstrap';
 
 /**
  * This is the place to configure tanstack router.
@@ -13,12 +15,16 @@ import { routeTree } from 'src/router/routesConfig';
  */
 const router = createRouter({
   routeTree,
+  defaultErrorComponent: ErrorBoundary,
   defaultPreloadStaleTime: 0, // we set this to 0 because we are using an external cache (tanstack query)
 });
 
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
+  }
+  interface StaticDataRouteOption {
+    underSection?: SectionName;
   }
 }
 

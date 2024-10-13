@@ -2,13 +2,13 @@ import { createRoute } from '@tanstack/react-router';
 
 import { layoutRoute } from '~bootstrap';
 
-const shoppingListsRoute = createRoute({
+const productsRoute = createRoute({
   getParentRoute: () => layoutRoute,
-  path: '/',
+  path: '/products',
   staticData: {
-    underSection: 'shoppingLists',
+    underSection: 'products',
   },
-  component: () => {},
+  component: () => <>Not yet implemented</>,
 });
 
-export { shoppingListsRoute };
+export { productsRoute };

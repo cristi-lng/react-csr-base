@@ -11,8 +11,15 @@ import { APIError } from 'src/types/apiError';
 /**
  * You can configure the axios defaults here
  * https://axios-http.com/docs/config_defaults
+ *
+ * The calls to the backend API are done via the frontend proxy.
+ * We do this to avoid exposing our backend to the public and overcome CORS issues.
+ * Check build/serverOptions.ts to see how the proxy is configured.
+ * Calls go like this: http://localhost:5000/backend/account -> http://localhost:5001/account
  */
-const axiosInstance = axios.create();
+const axiosInstance = axios.create({
+  baseURL: '/backend',
+});
 
 /**
  * You can add interceptors if you have some common logic that needs to run on every request or response.

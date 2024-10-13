@@ -7,7 +7,7 @@ import { sectionsService } from '~bootstrap/services/sectionsService';
 import logo from 'src/assets/images/shoppy-logo.svg';
 import classes from './navbar.module.scss';
 
-function Navbar() {
+function Navbar({ hideMenu }: { hideMenu?: () => void }) {
   const sections = sectionsService.getSections();
 
   const matchedRoutes = useMatches();
@@ -26,6 +26,7 @@ function Navbar() {
             <Link
               className={classNames(classes.navbar_link, { [classes.active]: section.name == currentSection?.name })}
               to={section.path}
+              onClick={() => hideMenu?.()}
             >
               <span className={section.icon} />
               <FormattedMessage id={section.label} />

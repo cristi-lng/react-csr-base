@@ -1,5 +1,6 @@
 import { createRootRoute, createRoute } from '@tanstack/react-router';
 
+import { sessionService } from '~bootstrap/services/sessionService';
 import { Shell } from '~bootstrap/components/shell/shell';
 import { Layout } from '~bootstrap/components/layout/layout';
 import { SectionName } from '~bootstrap/types/section';
@@ -20,6 +21,7 @@ const shellRoute = createRootRoute({
 const layoutRoute = createRoute({
   getParentRoute: () => shellRoute,
   id: 'layout',
+  beforeLoad: () => sessionService.beforePageLoad(),
   component: Layout,
 });
 
