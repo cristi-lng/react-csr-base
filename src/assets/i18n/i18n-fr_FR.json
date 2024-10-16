@@ -1,1 +1,16 @@
-{}
+{
+  "admin": "Administrateur",
+  "categories": "Catégories",
+  "genericError.brief": "Une erreur s'est produite. Veuillez réessayer.",
+  "genericError.contact": "Si l'erreur persiste, veuillez contacter <a>le service clientèle</a>.",
+  "genericError.details": "Essayez à nouveau d'effectuer votre dernière action.",
+  "genericError.title": "Une erreur s'est produite",
+  "logout": "Déconnexion",
+  "products": "Produits",
+  "regular": "Régulière",
+  "searchForAnything": "Recherche de tout",
+  "settings": "Réglages",
+  "shoppingLists": "Listes d'achats",
+  "specificError.details": "Il s'agit d'un exemple d'erreur spécifique provenant de la route",
+  "specificError.title": "Erreur spécifique"
+}

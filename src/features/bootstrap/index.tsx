@@ -15,6 +15,9 @@ import { SectionName } from '~bootstrap/types/section';
  *    - renders the page layout, including dynamic parts
  */
 const shellRoute = createRootRoute({
+  // this empty loader is necessary to avoid displaying any route until all beforeLoad functions are finished
+  // we prefer to display the content placeholder in the meantime
+  loader: () => {},
   component: Shell,
 });
 
