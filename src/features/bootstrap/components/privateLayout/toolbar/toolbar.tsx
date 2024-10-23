@@ -1,8 +1,8 @@
 import { useIntl } from 'react-intl';
 
 import { TaggedInput } from 'src/components/taggedInput/taggedInput';
-import { LocaleSelector } from '~bootstrap/components/layout/toolbar/localeSelector';
-import { ProfileDropdown } from '~bootstrap/components/layout/toolbar/profileDropdown';
+import { LocaleSelector } from '~bootstrap/components/privateLayout/toolbar/localeSelector';
+import { ProfileDropdown } from '~bootstrap/components/privateLayout/toolbar/profileDropdown';
 import classes from './toolbar.module.scss';
 
 function Toolbar() {

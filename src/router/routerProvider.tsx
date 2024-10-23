@@ -1,7 +1,9 @@
 import { createRouter, RouterProvider as TanstackRouterProvider } from '@tanstack/react-router';
 
 import { routeTree } from 'src/router/routesConfig';
+import { Loading } from 'src/components/loading/loading';
 import { ErrorBoundary } from 'src/components/errorBoundary/errorBoundary';
+import { NotFound } from 'src/components/notFound/notFound';
 import { SectionName } from '~bootstrap';
 
 /**
@@ -15,7 +17,9 @@ import { SectionName } from '~bootstrap';
  */
 const router = createRouter({
   routeTree,
+  defaultPendingComponent: Loading,
   defaultErrorComponent: ErrorBoundary,
+  defaultNotFoundComponent: NotFound,
   defaultPreloadStaleTime: 0, // we set this to 0 because we are using an external cache (tanstack query)
 });
 

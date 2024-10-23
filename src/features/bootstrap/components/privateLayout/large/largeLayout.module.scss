@@ -24,6 +24,7 @@
   &_main {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     padding: var(--space-light-md);
     overflow: auto;
   }

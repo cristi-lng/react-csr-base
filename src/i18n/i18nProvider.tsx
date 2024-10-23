@@ -5,6 +5,7 @@ import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { I18nMessages } from 'src/i18n/i18nMessages';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { specialKeys } from 'src/stores/queryKeys/specialKeys';
 import { i18nMessagesBuilder } from 'src/i18n/i18nMessagesBuilder';
 
 /**
@@ -28,7 +29,7 @@ function I18nProvider({ children }: PropsWithChildren) {
 
   function messagesQueryOptions() {
     return {
-      queryKey: ['i18nMessages', locale],
+      queryKey: specialKeys.i18nMessages(locale),
       queryFn: () => i18nMessagesBuilder.buildForLocale(locale),
       initialData: locale == DEFAULT_LOCALE ? i18nMessagesBuilder.buildDefault() : undefined,
       staleTime: Infinity,

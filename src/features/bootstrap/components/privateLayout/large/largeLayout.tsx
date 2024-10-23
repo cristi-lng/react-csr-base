@@ -1,7 +1,7 @@
 import { Outlet } from '@tanstack/react-router';
 
-import { Navbar } from '~bootstrap/components/layout/navbar/navbar';
-import { Toolbar } from '~bootstrap/components/layout/toolbar/toolbar';
+import { Navbar } from '~bootstrap/components/privateLayout/navbar/navbar';
+import { Toolbar } from '~bootstrap/components/privateLayout/toolbar/toolbar';
 import classes from './largeLayout.module.scss';
 
 function LargeLayout() {

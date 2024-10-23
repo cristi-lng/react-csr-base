@@ -14,6 +14,7 @@
   &_main {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     padding: var(--space-light-md);
     overflow: auto;
   }
@@ -56,8 +57,6 @@
   &_menuBar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: var(--space-light-md);
     border-top: 1px solid var(--color-neutral-weak-20);
   }
 
@@ -65,11 +64,12 @@
     display: flex;
     align-items: center;
     gap: var(--space-light-md);
+    padding: var(--space-light-md);
   }
 
   &_menuToggle {
     padding: var(--space-light-md);
-    margin: calc(0px - var(--space-light-md));
+    margin-left: auto;
     font-size: var(--font-size-xl);
     border: none;
     background: none;

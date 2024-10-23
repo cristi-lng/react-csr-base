@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { ErrorComponentProps } from '@tanstack/react-router';
 
 import { DisplayError } from 'src/types/displayError';
 import { SUPPORT_EMAIL } from 'src/constants/constants';
 import classes from './errorBoundary.module.scss';
 
-function ErrorBoundary({ error }: ErrorComponentProps) {
+function ErrorBoundary({ error }: { error: Error }) {
   const title = error instanceof DisplayError ? error.title : 'genericError.title';
   const details = error instanceof DisplayError ? error.details : 'genericError.details';
 

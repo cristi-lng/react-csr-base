@@ -2,6 +2,7 @@ import { Locale } from 'src/types/locale';
 import { LOCALE_OPTIONS } from 'src/constants/constants';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { accountApi } from '~bootstrap/api/accountApi';
+import { sessionService } from '~bootstrap/services/sessionService';
 
 class LocaleService {
   findLocaleOption(locale: Locale) {
@@ -17,7 +18,7 @@ class LocaleService {
 
   async #updateAccountLocale(locale: Locale) {
     const newAccount = await accountApi.patchAccount({ locale });
-    useSessionStore.getState().setAccount(newAccount);
+    sessionService.processAccount(newAccount);
   }
 }
 

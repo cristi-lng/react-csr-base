@@ -1,31 +1,24 @@
-import { queryClient } from 'src/api/queryProvider';
+import { Account } from 'src/types/account';
+import { accountApi } from '~bootstrap/api/accountApi';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
-import { accountQueries } from '~bootstrap/api/accountQueries';
 
 /**
- * This is the first point of business logic from the app
- * It should contain session initialization and management logic
+ * This service contains the session initialization and management logic
+ * - it is pretty basic at the moment, but in a real case scenario it will have much more logic
+ * - usually will include:
  *    - checks if the user is logged in or not
- *    - retrieves and processes the user data needed across the app pages
- *    - stores user data
+ *    - retrieving and processing the user data needed across the app pages
+ *    - storing the user data in the session store
+ *    - etc.
  */
 class SessionService {
-  #isFirstRun: boolean = true;
-
-  async beforePageLoad() {
-    if (this.#isFirstRun) {
-      try {
-        await this.#initSession();
-      } finally {
-        this.#isFirstRun = false;
-      }
-    }
+  async loadSession() {
+    const account = await accountApi.getAccount();
+    this.processAccount(account);
+    return {};
   }
 
-  async #initSession() {
-    const getAccountOptions = accountQueries.getAccountOptions();
-    const account = await queryClient.fetchQuery(getAccountOptions);
-
+  processAccount(account: Account) {
     const { setLocale, setAccount } = useSessionStore.getState();
     setLocale(account.locale);
     setAccount(account);
