@@ -14,7 +14,7 @@ import classes from './sessionHandler.module.scss';
  */
 function SessionHandler({ children }: { children: ReactNode }) {
   const { isPending, error } = useQuery({
-    queryKey: specialKeys.sessionLoad,
+    queryKey: specialKeys.sessionInfo,
     queryFn: () => sessionService.loadSession(),
   });
 

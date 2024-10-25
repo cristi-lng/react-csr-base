@@ -5,45 +5,32 @@
   flex-grow: 1;
 
   &_graphic {
-    width: var(--space-heavy-sm);
+    display: grid;
+    width: var(--space-heavy-lg);
     aspect-ratio: 1;
-    background:
-      no-repeat linear-gradient(var(--color-neutral-weak-20) 0 0) 0% 50%,
-      no-repeat linear-gradient(var(--color-neutral-weak-20) 0 0) 50% 50%,
-      no-repeat linear-gradient(var(--color-neutral-weak-20) 0 0) 100% 50%;
-    background-size: 20% 100%;
-    animation: pulse 1s infinite linear;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-right-color: var(--color-primary-weak-10);
+    animation: rotate 1s infinite linear;
 
-    @keyframes pulse {
-      0% {
-        background-size:
-          20% 100%,
-          20% 100%,
-          20% 100%;
-      }
-      33% {
-        background-size:
-          20% 10%,
-          20% 100%,
-          20% 100%;
-      }
-      50% {
-        background-size:
-          20% 100%,
-          20% 10%,
-          20% 100%;
-      }
-      66% {
-        background-size:
-          20% 100%,
-          20% 100%,
-          20% 10%;
-      }
+    &::before,
+    &::after {
+      content: '';
+      grid-area: 1/1;
+      margin: var(--space-light-xxs);
+      border: inherit;
+      border-radius: 50%;
+      animation: rotate 2s infinite;
+    }
+
+    &::after {
+      margin: var(--space-light-sm);
+      animation-duration: 3s;
+    }
+
+    @keyframes rotate {
       100% {
-        background-size:
-          20% 100%,
-          20% 100%,
-          20% 100%;
+        transform: rotate(1turn);
       }
     }
   }
