@@ -1,0 +1,48 @@
+{
+  "account": {
+    "name": "John Doe",
+    "role": "ADMIN",
+    "locale": "en_US",
+    "currency": "USD"
+  },
+  "shoppingLists": [
+    {
+      "id": "312cdc0c-5246-4191-9392-795d7d0f2a98",
+      "name": "Groceries",
+      "dueDate": "2024-10-10T12:00:00.000Z",
+      "category": "Food",
+      "items": [
+        { "name": "bread", "quantity": "500 g", "price": 3.59, "purchased": true },
+        { "name": "chicken breasts", "quantity": "1 kg", "price": 12.5, "purchased": false },
+        { "name": "rice", "quantity": "1 kg", "price": 4.59, "purchased": false },
+        { "name": "avocado", "quantity": "5 pieces", "price": 7, "purchased": true },
+        { "name": "broccoli", "quantity": "1 kg", "price": 1.25, "purchased": true },
+        { "name": "banana", "quantity": "7 pieces", "price": 4.95, "purchased": false }
+      ]
+    },
+    {
+      "id": "3f9b77d3-d9e7-4f2e-ac70-a833696a8e0d",
+      "name": "Summer Trip",
+      "dueDate": "2025-04-23T12:00:00.000Z",
+      "category": "Vacation",
+      "items": [
+        { "name": "airplane", "quantity": "2 tickets", "price": 1138, "purchased": true },
+        { "name": "hotel", "quantity": "1 room", "price": 568, "purchased": false },
+        { "name": "transfer", "quantity": "two ways", "price": 7.5, "purchased": false },
+        { "name": "insurance", "quantity": "2 persons", "price": 122, "purchased": false }
+      ]
+    },
+    {
+      "id": "624243e0-32b0-47e6-81fc-be78b218ee2e",
+      "name": "Gym gear",
+      "category": "Workout",
+      "items": [
+        { "name": "barbell bar", "quantity": "1 piece", "price": 69.99, "purchased": false },
+        { "name": "weight plates", "quantity": "1 set", "price": 296, "purchased": false },
+        { "name": "weight vest", "quantity": "1 piece", "price": 99.99, "purchased": true },
+        { "name": "kettlebell pack", "quantity": "3 pieces", "price": 82.99, "purchased": true },
+        { "name": "dumbbells", "quantity": "2x25kg", "price": 160, "purchased": false }
+      ]
+    }
+  ]
+}

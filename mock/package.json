@@ -2,8 +2,9 @@
   "name": "mocked-backend",
   "description": "Mocked backend to serve the demo app",
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "start": "json-server --watch api.json --port 5001 --delay 500"
+    "dev": "node server"
   },
   "dependencies": {
     "json-server": "^0.17.4"
