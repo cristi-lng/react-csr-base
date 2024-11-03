@@ -19,8 +19,9 @@ class SessionService {
   }
 
   processAccount(account: Account) {
-    const { setLocale, setAccount } = useSessionStore.getState();
+    const { setLocale, setCurrency, setAccount } = useSessionStore.getState();
     setLocale(account.locale);
+    setCurrency(account.currency);
     setAccount(account);
   }
 }

@@ -22,7 +22,7 @@ class I18nMessagesBuilder {
 
   async #importForLocale(locale: Exclude<Locale, typeof DEFAULT_LOCALE>) {
     switch (locale) {
-      case 'fr_FR':
+      case 'fr-FR':
         return import('src/assets/i18n/i18n-fr_FR.json');
       // other locales that you support
     }

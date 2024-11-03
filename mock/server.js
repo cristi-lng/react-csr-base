@@ -1,11 +1,11 @@
 import jsonServer from 'json-server';
 
 class Server {
-  constructor({ port, delay }) {
+  constructor({ port, delayInterval }) {
     const server = jsonServer.create();
     const router = jsonServer.router('db.json');
 
-    server.use((req, res, next) => this.#delayMiddleware(delay, next));
+    server.use((req, res, next) => this.#delayMiddleware(delayInterval, next));
 
     // custom routes
     server.get('/shoppingLists/overview', (req, res) => {
@@ -18,8 +18,8 @@ class Server {
     server.listen(port, () => console.log(`Mock server started on port ${port}`));
   }
 
-  #delayMiddleware(delay, next) {
-    const randomDelay = Math.floor(Math.random() * (delay.max - delay.min + 1)) + delay.min;
+  #delayMiddleware(delayInterval, next) {
+    const randomDelay = Math.floor(Math.random() * (delayInterval[1] - delayInterval[0] + 1)) + delayInterval[0];
     setTimeout(() => next(), randomDelay);
   }
 
@@ -42,4 +42,4 @@ class Server {
   }
 }
 
-new Server({ port: 5001, delay: { min: 500, max: 1000 } });
+new Server({ port: 5001, delayInterval: [500, 1000] });

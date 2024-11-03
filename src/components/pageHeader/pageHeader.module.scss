@@ -1,0 +1,25 @@
+.pageHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-light-md);
+  margin-bottom: var(--space-light-md);
+
+  & a {
+    font-size: var(--font-size-xxh);
+    color: var(--color-text-base);
+  }
+
+  & h1 {
+    font-size: var(--font-size-xxh);
+    font-weight: var(--font-weight-normal);
+    color: var(--color-primary-base);
+  }
+}
+
+@media #{$media-md-above} {
+  .pageHeader {
+    & a:hover {
+      color: var(--color-primary-base);
+    }
+  }
+}

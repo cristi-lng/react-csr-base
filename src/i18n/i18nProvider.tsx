@@ -23,9 +23,8 @@ function I18nProvider({ children }: PropsWithChildren) {
    * But this is desired behavior.
    */
   const locale = useSessionStore((state) => state.locale);
-  const intlLocale = locale.replace('_', '-');
   const { isSuccess, data: messages } = useQuery(messagesQueryOptions());
-  isSuccess && (intl = createIntl({ locale: intlLocale, defaultLocale: intlLocale, messages }, cache));
+  isSuccess && (intl = createIntl({ locale, defaultLocale: locale, messages }, cache));
 
   function messagesQueryOptions() {
     return {
