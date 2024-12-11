@@ -15,7 +15,7 @@ function ProfileDropdown() {
   return (
     <Dropdown
       mode={isMediumScreen ? 'inline' : 'over'}
-      position="bottomStart"
+      position="bottom"
       trigger={({ isOpen }) => (
         <div className={classes.profileDropdown_trigger}>
           <img className={classes.profileDropdown_avatar} src={account?.avatar || avatarPlaceholder} />

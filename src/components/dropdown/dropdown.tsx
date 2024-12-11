@@ -7,7 +7,7 @@ import { useOnClickOutside } from 'src/hooks/useOnClickOutside';
 
 type DropdownProps = {
   mode: 'inline' | 'over';
-  position: 'bottomStart' | 'bottomEnd';
+  position: 'bottom' | 'bottomStart' | 'bottomEnd';
   trigger: ({ isOpen }: { isOpen: boolean }) => ReactNode;
   options: () => ReactNode[];
 };

@@ -16,6 +16,7 @@
       @include absolute-fit;
       top: 100%;
       bottom: auto;
+      z-index: 10;
       background-color: var(--color-neutral-weak-max);
       border-radius: 4px;
       border: 1px solid var(--color-neutral-weak-20);
@@ -51,14 +52,24 @@
     background: none;
   }
 
+  &.bottom &_trigger,
+  &.bottom &_option,
   &.bottomStart &_trigger,
   &.bottomStart &_option {
     text-align: left;
   }
 
+  &.bottomStart > ul.over {
+    right: auto;
+  }
+
   &.bottomEnd &_trigger,
   &.bottomEnd &_option {
     text-align: right;
+  }
+
+  &.bottomEnd > ul.over {
+    left: auto;
   }
 }
 

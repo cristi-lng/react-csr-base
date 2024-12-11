@@ -1,11 +1,13 @@
 {
   "admin": "Admin",
   "categories": "Categories",
+  "delete": "Delete",
   "genericError.brief": "An error occurred. Please try again.",
   "genericError.contact": "If the error persists please contact <a>customer support</a>.",
   "genericError.details": "Please try to perform your last action again.",
   "genericError.title": "An error occurred",
   "logout": "Logout",
+  "noShoppingList": "You don't have any shopping list",
   "notFound.details": "The page you're looking for doesn't exist or has been moved.",
   "notFound.title": "Oops! Page not found",
   "products": "Products",

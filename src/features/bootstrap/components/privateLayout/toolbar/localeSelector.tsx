@@ -14,7 +14,7 @@ function LocaleSelector() {
   return (
     <Dropdown
       mode={isMediumScreen ? 'inline' : 'over'}
-      position="bottomStart"
+      position="bottom"
       trigger={({ isOpen }) => (
         <div className={classes.localeSelector_trigger}>
           {currentLocaleOption?.label}

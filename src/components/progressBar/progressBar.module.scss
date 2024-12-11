@@ -1,0 +1,12 @@
+.progressBar {
+  position: relative;
+  width: var(--space-light-xxh);
+  height: var(--space-light-xxh);
+  background-color: var(--color-primary-weak-30);
+
+  &_completed {
+    @include absolute-fit;
+    top: auto;
+    background-color: var(--color-primary-base);
+  }
+}

@@ -1,0 +1,16 @@
+.shoppingListsView {
+  &_lists {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-light-xl);
+  }
+}
+
+@media #{$media-md-above} {
+  .shoppingListsView {
+    &_lists {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--size-width-sm), 1fr));
+    }
+  }
+}

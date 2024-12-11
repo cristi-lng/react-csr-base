@@ -1,0 +1,10 @@
+.listActions {
+  &_trigger {
+    font-size: 1.5em;
+    padding: 0 var(--space-light-sm);
+  }
+
+  &_action {
+    padding: var(--space-light-xs);
+  }
+}
