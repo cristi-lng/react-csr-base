@@ -1,13 +1,15 @@
+import { Link } from '@tanstack/react-router';
+
 import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 import { FormatDate } from 'src/formatters/date/formatDate';
-import { FormatAmount } from 'src/formatters/amount/formatAmount';
 import { ProgressBar } from 'src/components/progressBar/progressBar';
-import classes from './listCard.module.scss';
+import { FormatAmount } from 'src/formatters/amount/formatAmount';
 import { ListActions } from '~shoppingLists/components/shoppingLists/listCard/listActions';
+import classes from './listCard.module.scss';
 
 function ListCard({ list }: { list: ShoppingListOverview }) {
   return (
-    <div className={classes.listCard}>
+    <Link className={classes.listCard} to="/shoppingLists/$id" params={{ id: list.id }}>
       <div className={classes.listCard_info}>
         <div className={classes.listCard_name}>{list.name}</div>
         {list.dueDate && (
@@ -26,7 +28,7 @@ function ListCard({ list }: { list: ShoppingListOverview }) {
       </div>
 
       <ListActions />
-    </div>
+    </Link>
   );
 }
 

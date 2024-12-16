@@ -10,6 +10,13 @@ class ShoppingListsQueries {
       queryFn: () => shoppingListsApi.getShoppingLists(),
     });
   }
+
+  getShoppingListOptions(id: string) {
+    return queryOptions({
+      queryKey: shoppingListsKeys.listDetails(id),
+      queryFn: () => (id == 'new' ? null : shoppingListsApi.getShoppingList(id)),
+    });
+  }
 }
 
 export const shoppingListsQueries = new ShoppingListsQueries();

@@ -4,6 +4,11 @@
     flex-direction: column;
     gap: var(--space-light-xl);
   }
+
+  &_addContainer {
+    display: flex;
+    margin-top: var(--space-light-xl);
+  }
 }
 
 @media #{$media-md-above} {

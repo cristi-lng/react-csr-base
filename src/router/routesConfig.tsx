@@ -1,5 +1,5 @@
 import { layoutRoute } from '~bootstrap';
-import { shoppingListsRoute } from '~shoppingLists';
+import { shoppingListsRoute, shoppingListRoute } from '~shoppingLists';
 import { productsRoute } from '~products';
 import { categoriesRoute } from '~categories';
 import { settingsRoute } from '~settings';
@@ -9,6 +9,12 @@ import { settingsRoute } from '~settings';
  *  - layout route
  *      - <page route>
  */
-const routeTree = layoutRoute.addChildren([shoppingListsRoute, productsRoute, categoriesRoute, settingsRoute]);
+const routeTree = layoutRoute.addChildren([
+  shoppingListsRoute,
+  shoppingListRoute,
+  productsRoute,
+  categoriesRoute,
+  settingsRoute,
+]);
 
 export { routeTree };
