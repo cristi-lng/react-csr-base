@@ -3,6 +3,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { shoppingListRoute } from '~shoppingLists';
 import { shoppingListsQueries } from '~shoppingLists/api/shoppingListsQueries';
 import { PageHeader } from 'src/components/pageHeader/pageHeader';
+import { ShoppingListView } from '~shoppingLists/components/shoppingList/shoppingListView';
 
 function ShoppingListPage() {
   const { id: shoppingListId } = shoppingListRoute.useParams();
@@ -12,9 +13,7 @@ function ShoppingListPage() {
   return (
     <>
       <PageHeader title="listDetails" back="/" />
-      <div>
-        <pre>{JSON.stringify(shoppingList, null, 2)}</pre>
-      </div>
+      <ShoppingListView shoppingList={shoppingList} />
     </>
   );
 }

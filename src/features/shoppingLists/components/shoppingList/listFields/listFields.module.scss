@@ -1,0 +1,12 @@
+.listFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-light-md);
+}
+
+@media #{$media-md-above} {
+  .listFields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--size-width-xs), 1fr));
+  }
+}

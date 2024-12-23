@@ -1,0 +1,31 @@
+.button {
+  display: inline-block;
+  padding: var(--space-light-xs) var(--space-light-md);
+  border-radius: 4px;
+  border: 1px solid transparent;
+
+  &.primary {
+    border-color: var(--color-primary-base);
+    background-color: var(--color-primary-base);
+    color: var(--color-neutral-weak-max);
+  }
+
+  &.neutral {
+    border-color: var(--color-neutral-base);
+    background-color: var(--color-neutral-weak-max);
+    color: var(--color-text-base);
+  }
+}
+
+@media #{$media-md-above} {
+  .button {
+    &.primary:hover {
+      background-color: var(--color-primary-weak-30);
+      color: var(--color-text-base);
+    }
+
+    &.neutral:hover {
+      background-color: var(--color-neutral-weak-30);
+    }
+  }
+}

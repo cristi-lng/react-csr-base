@@ -1,6 +1,6 @@
 import { useIntl } from 'react-intl';
 
-import { TaggedInput } from 'src/components/taggedInput/taggedInput';
+import { InputTagged } from 'src/components/inputTagged/inputTagged';
 import { LocaleSelector } from '~bootstrap/components/privateLayout/toolbar/localeSelector';
 import { ProfileDropdown } from '~bootstrap/components/privateLayout/toolbar/profileDropdown';
 import classes from './toolbar.module.scss';
@@ -11,7 +11,7 @@ function Toolbar() {
   return (
     <div className={classes.toolbar}>
       <div className={classes.toolbar_searchContainer}>
-        <TaggedInput
+        <InputTagged
           tag={<span className="icon-search" />}
           placeholder={intl.formatMessage({ id: 'searchForAnything' })}
         />
