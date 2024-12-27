@@ -1,7 +1,7 @@
 import { FormattedMessage } from 'react-intl';
 
 import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
-import { ListCard } from '~shoppingLists/components/shoppingLists/listCard/listCard';
+import { ListCard } from '~shoppingLists/components/shoppingListsView/listCard/listCard';
 import { Button } from 'src/components/button/button';
 import classes from './shoppingListsView.module.scss';
 

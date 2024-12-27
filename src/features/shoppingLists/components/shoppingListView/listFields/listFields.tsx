@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
+import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { InputText } from 'src/components/inputText/inputText';
 import classes from './listFields.module.scss';
 
@@ -8,7 +9,7 @@ function ListFields() {
   const {
     register,
     formState: { errors },
-  } = useFormContext();
+  } = useFormContext<ListFormData>();
   const intl = useIntl();
 
   return (
@@ -18,17 +19,8 @@ function ListFields() {
         invalid={!!errors.name}
         {...register('name', { required: true })}
       />
-      <InputText
-        type="date"
-        placeholder={intl.formatMessage({ id: 'dueDate' })}
-        invalid={!!errors.dueDate}
-        {...register('dueDate')}
-      />
-      <InputText
-        placeholder={intl.formatMessage({ id: 'category' })}
-        invalid={!!errors.category}
-        {...register('category')}
-      />
+      <InputText type="date" placeholder={intl.formatMessage({ id: 'dueDate' })} {...register('dueDate')} />
+      <InputText placeholder={intl.formatMessage({ id: 'category' })} {...register('category')} />
     </div>
   );
 }

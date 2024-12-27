@@ -2,7 +2,7 @@
   position: relative;
   width: var(--space-light-xxh);
   height: var(--space-light-xxh);
-  background-color: var(--color-primary-weak-30);
+  background-color: var(--color-primary-weak-20);
 
   &_completed {
     @include absolute-fit;

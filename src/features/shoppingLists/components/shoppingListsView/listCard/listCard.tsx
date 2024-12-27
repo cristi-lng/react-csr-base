@@ -4,7 +4,7 @@ import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview'
 import { FormatDate } from 'src/formatters/date/formatDate';
 import { ProgressBar } from 'src/components/progressBar/progressBar';
 import { FormatAmount } from 'src/formatters/amount/formatAmount';
-import { ListActions } from '~shoppingLists/components/shoppingLists/listCard/listActions';
+import { ListActions } from '~shoppingLists/components/shoppingListsView/listCard/listActions';
 import classes from './listCard.module.scss';
 
 function ListCard({ list }: { list: ShoppingListOverview }) {
@@ -22,8 +22,8 @@ function ListCard({ list }: { list: ShoppingListOverview }) {
 
       <div className={classes.listCard_stats}>
         <ProgressBar current={list.stats.totalItems - list.stats.remainingItems} max={list.stats.totalItems} />
-        <div className={classes.listCard_remainingCost}>
-          <FormatAmount amount={list.stats.remainingCost} />
+        <div className={classes.listCard_remainingAmount}>
+          <FormatAmount amount={list.stats.remainingAmount} />
         </div>
       </div>
 

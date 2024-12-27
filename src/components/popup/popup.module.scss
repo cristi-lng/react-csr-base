@@ -1,0 +1,50 @@
+.popup {
+  position: relative;
+
+  &_trigger {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  &_panel {
+    @include absolute-fit;
+    top: 100%;
+    bottom: auto;
+    z-index: 10;
+    background-color: var(--color-neutral-weak-max);
+    border-radius: 4px;
+    border: 1px solid var(--color-neutral-weak-20);
+
+    &.bottomStart {
+      right: auto;
+    }
+
+    &.bottomEnd {
+      left: auto;
+    }
+
+    &.open {
+      animation: fade-in-up 0.2s forwards;
+    }
+
+    &.close {
+      animation: fade-out-down 0.2s forwards;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        transform: translateY(var(--space-light-md));
+        opacity: 0;
+      }
+    }
+
+    @keyframes fade-out-down {
+      to {
+        transform: translateY(var(--space-light-md));
+        opacity: 0;
+      }
+    }
+  }
+}

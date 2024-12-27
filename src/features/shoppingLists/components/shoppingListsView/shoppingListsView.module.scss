@@ -11,11 +11,11 @@
   }
 }
 
-@media #{$media-md-above} {
+@media #{$media-lg-above} {
   .shoppingListsView {
     &_lists {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--size-width-sm), 1fr));
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

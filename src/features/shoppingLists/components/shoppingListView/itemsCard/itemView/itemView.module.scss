@@ -1,0 +1,31 @@
+.itemView {
+  display: flex;
+  align-items: center;
+  gap: var(--space-light-md);
+
+  &_name {
+    font-weight: var(--font-weight-semiBold);
+  }
+
+  &_quantity {
+    font-size: var(--font-size-sm);
+  }
+
+  &_price {
+    margin-left: auto;
+    font-size: var(--font-size-sm);
+  }
+
+  &_delete {
+    border: none;
+    background-color: transparent;
+    color: var(--color-error-base);
+  }
+
+  &.purchased &_name,
+  &.purchased &_quantity,
+  &.purchased &_price {
+    text-decoration: line-through;
+    color: var(--color-neutral-weak-10);
+  }
+}

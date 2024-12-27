@@ -4,7 +4,7 @@ type ShoppingListOverview = {
   readonly dueDate?: string;
   readonly category?: string;
   readonly stats: {
-    readonly remainingCost: number;
+    readonly remainingAmount: number;
     readonly remainingItems: number;
     readonly totalItems: number;
   };

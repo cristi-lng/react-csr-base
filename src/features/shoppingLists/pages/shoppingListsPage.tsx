@@ -2,7 +2,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { shoppingListsQueries } from '~shoppingLists/api/shoppingListsQueries';
 import { PageHeader } from 'src/components/pageHeader/pageHeader';
-import { ShoppingListsView } from '~shoppingLists/components/shoppingLists/shoppingListsView';
+import { ShoppingListsView } from '~shoppingLists/components/shoppingListsView/shoppingListsView';
 
 function ShoppingListsPage() {
   const getShoppingListsOptions = shoppingListsQueries.getShoppingListsOptions();

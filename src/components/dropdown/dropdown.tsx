@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
+import classNames from 'classnames';
 
 import { useAnimatedVisibility } from 'src/hooks/useAnimatedVisibility';
-import classes from './dropdown.module.scss';
-import classNames from 'classnames';
 import { useOnClickOutside } from 'src/hooks/useOnClickOutside';
+import classes from './dropdown.module.scss';
 
 type DropdownProps = {
   mode: 'inline' | 'over';

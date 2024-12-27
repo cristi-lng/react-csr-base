@@ -3,7 +3,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import { shoppingListRoute } from '~shoppingLists';
 import { shoppingListsQueries } from '~shoppingLists/api/shoppingListsQueries';
 import { PageHeader } from 'src/components/pageHeader/pageHeader';
-import { ShoppingListView } from '~shoppingLists/components/shoppingList/shoppingListView';
+import { ShoppingListView } from '~shoppingLists/components/shoppingListView/shoppingListView';
 
 function ShoppingListPage() {
   const { id: shoppingListId } = shoppingListRoute.useParams();

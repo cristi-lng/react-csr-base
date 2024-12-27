@@ -1,11 +1,16 @@
-import { ShoppingListItem } from '~shoppingLists/types/shoppingListItem';
-
 type ShoppingListDetails = {
   readonly id: string;
-  name: string;
-  dueDate?: string;
-  category?: string;
-  items: ShoppingListItem[];
+  readonly name: string;
+  readonly dueDate?: string;
+  readonly category?: string;
+  readonly items: ShoppingListItem[];
 };
 
-export { type ShoppingListDetails };
+type ShoppingListItem = {
+  readonly name: string;
+  readonly quantity: string;
+  readonly price: number;
+  readonly purchased: boolean;
+};
+
+export { type ShoppingListDetails, type ShoppingListItem };

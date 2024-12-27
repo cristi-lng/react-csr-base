@@ -4,9 +4,9 @@
   gap: var(--space-light-md);
 }
 
-@media #{$media-md-above} {
+@media #{$media-lg-above} {
   .listFields {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--size-width-xs), 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -29,13 +29,13 @@ class Server {
       const stats = items.reduce(
         (stats, item) => {
           if (!item.purchased) {
-            stats.remainingCost += item.price;
+            stats.remainingAmount += item.price;
             stats.remainingItems++;
           }
           stats.totalItems++;
           return stats;
         },
-        { remainingCost: 0, remainingItems: 0, totalItems: 0 },
+        { remainingAmount: 0, remainingItems: 0, totalItems: 0 },
       );
       return { ...rest, stats };
     });
