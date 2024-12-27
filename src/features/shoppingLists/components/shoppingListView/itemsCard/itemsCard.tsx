@@ -2,7 +2,7 @@ import { useFieldArray } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
 import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
-import { ItemStatsView } from '~shoppingLists/components/shoppingListView/itemsCard/itemStatsView/itemStatsView';
+import { ItemsStatsView } from '~shoppingLists/components/shoppingListView/itemsCard/itemsStatsView/itemsStatsView';
 import { ItemView } from '~shoppingLists/components/shoppingListView/itemsCard/itemView/itemView';
 import { AddItemForm } from '~shoppingLists/components/shoppingListView/itemsCard/addItemForm/addItemForm';
 import classes from './itemsCard.module.scss';
@@ -14,7 +14,7 @@ function ItemsCard() {
     <div className={classes.itemsCard}>
       <div className={classes.itemsCard_header}>
         <FormattedMessage id="items" />
-        <ItemStatsView />
+        <ItemsStatsView />
       </div>
 
       <div className={classes.itemsCard_items}>

@@ -1,5 +1,5 @@
 import { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
-import { ListFormData, ItemFormData, ItemStats } from '~shoppingLists/components/shoppingListView/listFormData';
+import { ListFormData, ItemFormData, ItemsStats } from '~shoppingLists/components/shoppingListView/listFormData';
 
 class ListFormService {
   computeInitData(shoppingList: ShoppingListDetails | null): ListFormData {
@@ -11,8 +11,8 @@ class ListFormService {
     }
   }
 
-  computeItemStats(items: ItemFormData[]) {
-    return items.reduce<ItemStats>((stats, item) => {
+  computeItemsStats(items: ItemFormData[]) {
+    return items.reduce<ItemsStats>((stats, item) => {
       if (item.purchased) {
         stats.paidAmount += item.price!;
         stats.paidItems++;
@@ -23,7 +23,7 @@ class ListFormService {
       stats.totalAmount += item.price!;
       stats.totalItems++;
       return stats;
-    }, new ItemStats());
+    }, new ItemsStats());
   }
 }
 

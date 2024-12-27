@@ -12,7 +12,7 @@ type ItemFormData = {
   purchased?: boolean | null | undefined;
 };
 
-class ItemStats {
+class ItemsStats {
   remainingAmount: number;
   paidAmount: number;
   totalAmount: number;
@@ -30,4 +30,4 @@ class ItemStats {
   }
 }
 
-export { type ListFormData, type ItemFormData, ItemStats };
+export { type ListFormData, type ItemFormData, ItemsStats };

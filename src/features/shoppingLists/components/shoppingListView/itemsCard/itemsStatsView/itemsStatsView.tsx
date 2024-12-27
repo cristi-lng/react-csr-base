@@ -6,46 +6,49 @@ import { listFormService } from '~shoppingLists/components/shoppingListView/list
 import { FormatAmount } from 'src/formatters/amount/formatAmount';
 import { ProgressBar } from 'src/components/progressBar/progressBar';
 import { Popup } from 'src/components/popup/popup';
-import classes from './itemStatsView.module.scss';
+import classes from './itemsStatsView.module.scss';
 
-function ItemStatsView() {
+function ItemsStatsView() {
   const { watch } = useFormContext<ListFormData>();
   const items = watch('items');
-  const itemStats = listFormService.computeItemStats(items!);
+  const itemsStats = listFormService.computeItemsStats(items!);
 
   return (
-    <div className={classes.itemStatsView}>
-      <div className={classes.itemStatsView_inlineAmount}>
-        <FormatAmount amount={itemStats.remainingAmount} />
+    <div className={classes.itemsStatsView}>
+      <div className={classes.itemsStatsView_inlineAmount}>
+        <FormatAmount amount={itemsStats.remainingAmount} />
       </div>
 
-      <ProgressBar current={itemStats.paidItems} max={itemStats.totalItems} />
+      <ProgressBar current={itemsStats.paidItems} max={itemsStats.totalItems} />
 
-      <Popup position="bottomEnd" trigger={() => <span className={classes.itemStatsView_detailsTrigger}>&#8942;</span>}>
-        <div className={classes.itemStatsView_detailsPanel}>
+      <Popup
+        position="bottomEnd"
+        trigger={() => <span className={classes.itemsStatsView_detailsTrigger}>&#8942;</span>}
+      >
+        <div className={classes.itemsStatsView_detailsPanel}>
           <div>
             <FormattedMessage id="remainingAmount" />
           </div>
-          <div className={classes.itemStatsView_highlightedAmount}>
-            <FormatAmount amount={itemStats.remainingAmount} />
+          <div className={classes.itemsStatsView_highlightedAmount}>
+            <FormatAmount amount={itemsStats.remainingAmount} />
           </div>
           <div>
             <FormattedMessage id="paidAmount" />
           </div>
           <div>
-            <FormatAmount amount={itemStats.paidAmount} />
+            <FormatAmount amount={itemsStats.paidAmount} />
           </div>
           <div>
             <FormattedMessage id="totalAmount" />
           </div>
           <div>
-            <FormatAmount amount={itemStats.totalAmount} />
+            <FormatAmount amount={itemsStats.totalAmount} />
           </div>
           <div>
             <FormattedMessage id="purchasedItems" />
           </div>
           <div>
-            {itemStats.paidItems}/{itemStats.totalItems}
+            {itemsStats.paidItems}/{itemsStats.totalItems}
           </div>
         </div>
       </Popup>
@@ -53,4 +56,4 @@ function ItemStatsView() {
   );
 }
 
-export { ItemStatsView };
+export { ItemsStatsView };
