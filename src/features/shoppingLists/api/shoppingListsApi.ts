@@ -12,6 +12,18 @@ class ShoppingListsApi {
     const { data } = await axios.get<ShoppingListDetails>(`/shoppingLists/${id}`);
     return data;
   }
+
+  createShoppingList(payload: Omit<ShoppingListDetails, 'id'>) {
+    return axios.post('/shoppingLists', payload);
+  }
+
+  updateShoppingList(id: string, payload: Omit<ShoppingListDetails, 'id'>) {
+    return axios.put(`/shoppingLists/${id}`, payload);
+  }
+
+  deleteShoppingList(id: string) {
+    return axios.delete(`/shoppingLists/${id}`);
+  }
 }
 
 export const shoppingListsApi = new ShoppingListsApi();

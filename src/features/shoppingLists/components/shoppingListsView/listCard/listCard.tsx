@@ -27,7 +27,9 @@ function ListCard({ list }: { list: ShoppingListOverview }) {
         </div>
       </div>
 
-      <ListActions />
+      <div onClick={(event) => event.preventDefault()}>
+        <ListActions list={list} />
+      </div>
     </Link>
   );
 }

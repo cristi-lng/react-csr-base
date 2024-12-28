@@ -9,11 +9,12 @@ import { Button } from 'src/components/button/button';
 import classes from './shoppingListView.module.scss';
 
 function ShoppingListView({ shoppingList }: { shoppingList: ShoppingListDetails | null }) {
-  const { formCtrl } = useShoppingListView({ shoppingList });
+  const { formCtrl, handleSaveList } = useShoppingListView({ shoppingList });
+  const { handleSubmit } = formCtrl;
 
   return (
     <FormProvider {...formCtrl}>
-      <form className={classes.shoppingListView} onSubmit={formCtrl.handleSubmit((d) => console.log(d))}>
+      <form className={classes.shoppingListView} onSubmit={handleSubmit((formData) => handleSaveList(formData))}>
         <ListFields />
         <ItemsCard />
 
