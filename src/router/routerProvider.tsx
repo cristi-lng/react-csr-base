@@ -17,6 +17,7 @@ import { SectionName } from '~bootstrap';
  */
 const router = createRouter({
   routeTree,
+  defaultPendingMs: 0,
   defaultPendingComponent: Loading,
   defaultErrorComponent: ErrorBoundary,
   defaultNotFoundComponent: NotFound,

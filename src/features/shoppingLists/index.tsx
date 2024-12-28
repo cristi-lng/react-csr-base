@@ -1,10 +1,8 @@
-import { createRoute } from '@tanstack/react-router';
+import { createRoute, lazyRouteComponent } from '@tanstack/react-router';
 
 import { layoutRoute } from '~bootstrap';
 import { shoppingListsLoader } from '~shoppingLists/pages/shoppingListsLoader';
-import { ShoppingListsPage } from '~shoppingLists/pages/shoppingListsPage';
 import { shoppingListLoader } from '~shoppingLists/pages/shoppingListLoader';
-import { ShoppingListPage } from '~shoppingLists/pages/shoppingListPage';
 
 const shoppingListsRoute = createRoute({
   getParentRoute: () => layoutRoute,
@@ -13,7 +11,7 @@ const shoppingListsRoute = createRoute({
     underSection: 'shoppingLists',
   },
   loader: shoppingListsLoader,
-  component: ShoppingListsPage,
+  component: lazyRouteComponent(() => import('~shoppingLists/pages/shoppingListsPage'), 'ShoppingListsPage'),
 });
 
 const shoppingListRoute = createRoute({
@@ -23,7 +21,7 @@ const shoppingListRoute = createRoute({
     underSection: 'shoppingLists',
   },
   loader: ({ params: { id } }) => shoppingListLoader(id),
-  component: ShoppingListPage,
+  component: lazyRouteComponent(() => import('~shoppingLists/pages/shoppingListPage'), 'ShoppingListPage'),
 });
 
 export { shoppingListsRoute, shoppingListRoute };
