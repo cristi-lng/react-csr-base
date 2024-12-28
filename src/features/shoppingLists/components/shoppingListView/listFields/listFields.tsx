@@ -19,7 +19,11 @@ function ListFields() {
         invalid={!!errors.name}
         {...register('name', { required: true })}
       />
-      <InputText type="date" placeholder={intl.formatMessage({ id: 'dueDate' })} {...register('dueDate')} />
+      <InputText
+        placeholder={intl.formatMessage({ id: 'dueDate' })}
+        onFocus={(event) => (event.target.type = 'date')}
+        {...register('dueDate', { onBlur: (event) => (event.target.type = 'text') })}
+      />
       <InputText placeholder={intl.formatMessage({ id: 'category' })} {...register('category')} />
     </div>
   );
