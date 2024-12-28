@@ -8,6 +8,7 @@
     "dev": "vite --config build/vite.config.ts",
     "build": "tsc && vite build --config build/vite.config.ts",
     "preview": "vite preview --config build/vite.config.ts",
+    "test": "vitest --config build/vite.config.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-checker": "^0.6.4",
-    "vite-plugin-minify": "^1.5.2"
+    "vite-plugin-minify": "^1.5.2",
+    "vitest": "^2.1.8"
   }
 }
