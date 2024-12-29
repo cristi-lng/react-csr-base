@@ -9,7 +9,7 @@
     "build": "tsc && vite build --config build/vite.config.ts",
     "preview": "vite preview --config build/vite.config.ts",
     "test": "vitest --config build/vite.config.ts",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.11",
@@ -23,25 +23,26 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.32.1",
-    "@types/node": "^20.12.8",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@eslint/js": "^9.17.0",
+    "@tanstack/eslint-plugin-query": "^5.62.9",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.17.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-boundaries": "^4.2.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.2.5",
-    "sass": "^1.76.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "vite-plugin-checker": "^0.6.4",
-    "vite-plugin-minify": "^1.5.2",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-boundaries": "^5.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^5.4.11",
+    "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-minify": "^2.1.0",
     "vitest": "^2.1.8"
   }
 }

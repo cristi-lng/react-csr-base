@@ -13,11 +13,15 @@ function useAnimatedVisibility() {
   }
 
   function hideElement() {
-    elementState == 'open' && setElementState('close');
+    if (elementState == 'open') {
+      setElementState('close');
+    }
   }
 
   function afterElementAnimation() {
-    elementState == 'close' && setElementState('hidden');
+    if (elementState == 'close') {
+      setElementState('hidden');
+    }
   }
 
   return { elementState, toggleElement, hideElement, afterElementAnimation };

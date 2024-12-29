@@ -13,7 +13,7 @@ import { ViteMinifyPlugin } from 'vite-plugin-minify';
 function createChecker() {
   return checker({
     typescript: true,
-    eslint: { lintCommand: 'eslint . --ext ts,tsx' },
+    eslint: { useFlatConfig: true, lintCommand: 'eslint .' },
     overlay: { initialIsOpen: 'error' },
   });
 }

@@ -24,7 +24,9 @@ function I18nProvider({ children }: PropsWithChildren) {
    */
   const locale = useSessionStore((state) => state.locale);
   const { isSuccess, data: messages } = useQuery(messagesQueryOptions());
-  isSuccess && (intl = createIntl({ locale, defaultLocale: locale, messages }, cache));
+  if (isSuccess) {
+    intl = createIntl({ locale, defaultLocale: locale, messages }, cache);
+  }
 
   function messagesQueryOptions() {
     return {
