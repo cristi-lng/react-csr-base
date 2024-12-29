@@ -12,7 +12,6 @@ body {
 }
 
 .contentPlaceholder_gw2ni {
-  @include full-page-height;
   position: relative;
   display: flex;
   min-width: var(--size-width-xs);
@@ -21,6 +20,7 @@ body {
   padding: var(--space-light-md);
   margin: auto;
   overflow: hidden;
+  @include full-page-height;
 
   &::before {
     content: '';

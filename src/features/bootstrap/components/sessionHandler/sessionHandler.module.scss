@@ -1,8 +1,8 @@
 .sessionHandler {
-  @include full-page-height;
   display: flex;
   min-width: var(--size-width-xs);
   max-width: var(--size-width-xl);
   margin: auto;
   overflow: hidden;
+  @include full-page-height;
 }
