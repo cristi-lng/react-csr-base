@@ -32,7 +32,7 @@ To help you better understand the reasoning behind certain decisions, I’ve add
 
 Here’s a brief look at the app in action:
 
-<video src='docs/assets/appDemo.mp4'></video>
+https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
 
 ## Details
 
