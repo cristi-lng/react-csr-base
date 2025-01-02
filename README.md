@@ -34,5 +34,8 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
 ## Details
 
 - [Project structure](docs/projectStructure.md)
+  - [Feature based architecture](docs/projectStructure.md#feature-based-architecture)
+  - [Component split](docs/projectStructure.md#component-split)
+  - [Principles](docs/projectStructure.md#principles)
 
 ## Installation and usage
