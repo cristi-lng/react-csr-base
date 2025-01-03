@@ -93,11 +93,11 @@ Personally, I’m not a fan of Tailwind CSS because it abstracts the CSS languag
 
 Additionally, I’ve implemented a custom CSS variable system inspired by the lightweight library [Open Props↗](https://open-props.style/). Using a variable system ensures a consistent UI and provides a central place to control styles. By adjusting variables like font sizes, spacing, or colors, you can easily modify the look and feel of the entire application.
 
-In the shopping list project, I’ve included such a variable system. You can find it [here](../src/styles/varSystem/index.scss) and explore any component CSS to see how it’s used.
+In the shopping list project, I’ve included such a variable system. You can find it [here](../src/styles/varSystem) and explore any component CSS to see how it’s used.
 
 ## Mobile support
 
-Current statistics show that most web traffic comes from mobile devices. As a result, I believe it’s essential for any application to provide a mobile-friendly version. Fortunately, advancements in CSS over the past few years have made this increasingly easier to achieve.
+Current statistics show that most web traffic comes from mobile devices. Therefore, I believe it’s essential for any application to provide a mobile-friendly version. Fortunately, advancements in CSS over the past few years have made this increasingly easier to achieve.
 
 For the shopping list application, I implemented the mobile version using two essential utilities. The first is the [`useMatchMediaQuery`](../src/hooks/useMatchMediaQuery.ts) hook, which allows toggling component parts based on device size. The second is the standard CSS media query rule. A good example of this approach can be seen in the [`privateLayout`](../src/features/bootstrap/components/privateLayout/privateLayout.tsx) component.
 

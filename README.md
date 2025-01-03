@@ -47,5 +47,10 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
   - [Styling](docs/codingTools.md#styling)
   - [Mobile support](docs/codingTools.md#mobile-support)
   - [Testing](docs/codingTools.md#testing)
+- [Assisting tools](docs/assistingTools.md)
+  - [Linting and formatting](docs/assistingTools.md#linting-and-formatting)
+  - [Build](docs/assistingTools.md#build)
+  - [Bundle splitting](docs/assistingTools.md#bundle-splitting)
+  - [IDE](docs/assistingTools.md#ide)
 
 ## Installation and usage
