@@ -52,5 +52,9 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
   - [Build](docs/assistingTools.md#build)
   - [Bundle splitting](docs/assistingTools.md#bundle-splitting)
   - [IDE](docs/assistingTools.md#ide)
+- [Bonus](docs/bonus.md)
+  - [Initial loading](docs/bonus.md#initial-loading)
+  - [Variable fonts](docs/bonus.md#variable-fonts)
+  - [Services as classes](docs/bonus.md#services-as-classes)
 
 ## Installation and usage
