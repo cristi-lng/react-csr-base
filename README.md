@@ -57,4 +57,44 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
   - [Variable fonts](docs/bonus.md#variable-fonts)
   - [Services as classes](docs/bonus.md#services-as-classes)
 
-## Installation and usage
+## Installation
+
+Follow the steps below to install the application for development:
+
+- **Start the mock server**
+  - open a terminal
+  - go to the `mock` folder
+  - run `npm install`
+  - run `npm run dev`
+- **Start the application**
+  - open another terminal
+  - go to the root folder
+  - run `npm install`
+  - run `npm run dev`
+
+If everything is set up correctly, both the mocked backend server and the Vite frontend server should now be running.
+
+To create a production build, run `npm run build` in the root folder. To preview it in Vite, run `npm run preview`.
+
+## Building on top
+
+If you're planning to build your next application using this project, this section will help you navigate and adjust the key parts:
+
+- **Clean up the project**
+  - Remove the `docs` folder and update the `README.md`
+  - Remove or adjust the mock server
+    - If you have a dedicated backend, delete the `mock` folder
+    - If not, modify the mock data to suit your needs
+- **Update project essentials**
+  - Update `index.html` to reflect your brand (favicon, fonts, content placeholder)
+  - Adjust `app.tsx`:
+    - This is the root component of the React app
+    - It initializes key dependencies (TanStack Query, internationalization, router)
+    - Use this as a starting point to add or remove tools
+- **Organize the `features` folder**
+  - Keep the `bootstrap`
+    - It contains functionality governing the entire app (e.g., layout, session management)
+  - Remove other feature folders, but inspect `shoppingLists` to understand how a feature is implemented
+  - Add new folders for your specific features
+
+Happy coding! 😉
