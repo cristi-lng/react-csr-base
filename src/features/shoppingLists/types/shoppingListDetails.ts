@@ -1,8 +1,8 @@
 type ShoppingListDetails = {
   readonly id: string;
   readonly name: string;
-  readonly dueDate?: string;
-  readonly category?: string;
+  readonly dueDate?: string | null;
+  readonly category?: string | null;
   readonly items: ShoppingListItem[];
 };
 

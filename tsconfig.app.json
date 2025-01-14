@@ -22,6 +22,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    /* Global types */
+    "types": ["vitest/globals"],
+
     /* Aliases */
     "baseUrl": "./",
     "paths": {

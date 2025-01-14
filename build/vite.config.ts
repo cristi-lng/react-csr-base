@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import path from 'path';
 
@@ -19,4 +20,9 @@ export default defineConfig({
   css: cssOptions,
   build: buildOptions,
   server: serverOptions,
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'testing/setupTests.ts',
+  },
 });

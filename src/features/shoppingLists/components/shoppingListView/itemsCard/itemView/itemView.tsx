@@ -25,7 +25,12 @@ function ItemView({ itemIndex, deleteItem }: ItemViewProps) {
       <div className={classes.itemView_price}>
         <FormatAmount amount={item.price!} />
       </div>
-      <button className={classes.itemView_delete} type="button" onClick={() => deleteItem(itemIndex)}>
+      <button
+        className={classes.itemView_delete}
+        type="button"
+        onClick={() => deleteItem(itemIndex)}
+        aria-label="delete item"
+      >
         <span className="icon-trash"></span>
       </button>
     </div>
