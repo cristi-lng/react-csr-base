@@ -19,6 +19,7 @@
     ├───router                         # routing configuration
     ├───stores                         # global stores
     ├───styles                         # global styling
+    ├───testing                        # global testing utilities
     └───types                          # global data types
 ```
 
@@ -85,6 +86,7 @@ For an example of this structure, refer to [this implementation](../src/features
 │   listFormService.test.ts            # unit tests for business logic
 │   listFormService.ts                 # component business logic
 │   shoppingListView.module.scss
+│   shoppingListView.test.tsx          # component tests
 │   shoppingListView.tsx               # component view
 │   useShoppingListView.ts             # custom hook
 ```
