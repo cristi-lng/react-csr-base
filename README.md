@@ -46,7 +46,10 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
   - [Internationalization](docs/codingTools.md#internationalization)
   - [Styling](docs/codingTools.md#styling)
   - [Mobile support](docs/codingTools.md#mobile-support)
-  - [Testing](docs/codingTools.md#testing)
+- [Testing tools](docs/testingTools.md)
+  - [Unit tests](docs/testingTools.md#unit-tests)
+  - [Integration tests](docs/testingTools.md#integration-tests)
+  - [End-to-end tests](docs/testingTools.md#end-to-end-tests)
 - [Assisting tools](docs/assistingTools.md)
   - [Linting and formatting](docs/assistingTools.md#linting-and-formatting)
   - [Build](docs/assistingTools.md#build)
@@ -72,7 +75,7 @@ Follow the steps below to install the application for development:
   - run `npm install`
   - run `npm run dev`
 
-If everything is set up correctly, both the mocked backend server and the Vite frontend server should now be running.
+If everything was set up correctly, both the mocked backend server and the Vite frontend server should now be running.
 
 To create a production build, run `npm run build` in the root folder. To preview it in Vite, run `npm run preview`.
 

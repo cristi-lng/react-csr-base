@@ -8,7 +8,7 @@
     ├───assets                         # static assets
     ├───components                     # generic components
     ├───constants                      # global constants
-    ├───features                       # app features - most of application logic
+    ├───features                       # app features - most of the application logic
     │   ├───bootstrap
     │   ├───categories
     │   ├───shoppingLists
