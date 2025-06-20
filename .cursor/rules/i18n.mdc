@@ -1,0 +1,312 @@
+---
+description: Internationalization (React Intl) Rules
+globs: 
+alwaysApply: false
+---
+# Internationalization (React Intl) Rules
+
+## Message Management
+
+### File Structure
+- Add translations to `src/assets/i18n/i18n-[locale].json`
+- Use nested keys for organization
+- Keep message keys descriptive and hierarchical
+
+### Message Key Conventions
+```json
+{
+  "global": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "featureName": {
+    "title": "Feature Title",
+    "description": "Feature description",
+    "actions": {
+      "create": "Create New",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "errors": {
+      "loadFailed": "Failed to load data",
+      "saveFailed": "Failed to save changes"
+    }
+  }
+}
+```
+
+### Key Naming Best Practices
+- Use camelCase for keys
+- Group related messages under common parent keys
+- Use descriptive names that indicate context
+- Separate errors, actions, and content logically
+
+## Component Usage
+
+### FormattedMessage Component
+```tsx
+import { FormattedMessage } from 'react-intl';
+
+function MyComponent() {
+  return (
+    <div>
+      <h1><FormattedMessage id="featureName.title" /></h1>
+      <p><FormattedMessage id="featureName.description" /></p>
+    </div>
+  );
+}
+```
+
+### useIntl Hook
+```tsx
+import { useIntl } from 'react-intl';
+
+function MyComponent() {
+  const intl = useIntl();
+
+  const buttonLabel = intl.formatMessage({ id: 'global.save' });
+  const errorMessage = intl.formatMessage({ id: 'featureName.errors.saveFailed' });
+
+  return (
+    <button aria-label={buttonLabel}>
+      {buttonLabel}
+    </button>
+  );
+}
+```
+
+### With Variables
+```tsx
+// In component
+<FormattedMessage
+  id="featureName.itemCount"
+  values={{ count: items.length }}
+/>
+
+// In JSON
+{
+  "featureName": {
+    "itemCount": "You have {count} items"
+  }
+}
+```
+
+### Pluralization
+```tsx
+// In component
+<FormattedMessage
+  id="featureName.itemCount"
+  values={{
+    count: items.length,
+    plural: items.length === 1 ? 'item' : 'items'
+  }}
+/>
+
+// In JSON
+{
+  "featureName": {
+    "itemCount": "You have {count} {plural}"
+  }
+}
+```
+
+## Error Messages
+
+### User-Facing Errors
+- Always use i18n keys for DisplayError
+- Provide both title and details when appropriate
+- Make error messages helpful and actionable
+
+```tsx
+// Good
+throw new DisplayError({
+  title: 'shoppingLists.errors.loadFailed.title',
+  details: 'shoppingLists.errors.loadFailed.details'
+});
+
+// Bad
+throw new DisplayError({
+  title: 'Error',
+  details: 'Something went wrong'
+});
+```
+
+### Error Message Structure
+```json
+{
+  "featureName": {
+    "errors": {
+      "loadFailed": {
+        "title": "Failed to Load Data",
+        "details": "Please check your connection and try again."
+      },
+      "saveFailed": {
+        "title": "Failed to Save Changes",
+        "details": "Your changes could not be saved. Please try again."
+      }
+    }
+  }
+}
+```
+
+## Forms and Validation
+
+### Form Labels and Placeholders
+```tsx
+function MyForm() {
+  return (
+    <form>
+      <label>
+        <FormattedMessage id="forms.email.label" />
+        <input
+          type="email"
+          placeholder={intl.formatMessage({ id: 'forms.email.placeholder' })}
+        />
+      </label>
+    </form>
+  );
+}
+```
+
+### Validation Messages
+```json
+{
+  "forms": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email",
+      "validation": {
+        "required": "Email is required",
+        "invalid": "Please enter a valid email address"
+      }
+    }
+  }
+}
+```
+
+## Navigation and UI
+
+### Navigation Labels
+```json
+{
+  "navigation": {
+    "home": "Home",
+    "shoppingLists": "Shopping Lists",
+    "categories": "Categories",
+    "profile": "Profile"
+  }
+}
+```
+
+### Button Labels
+```json
+{
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}
+```
+
+## Date and Number Formatting
+
+### Date Formatting
+```tsx
+import { FormattedDate, FormattedTime } from 'react-intl';
+
+function DateDisplay({ date }: { date: Date }) {
+  return (
+    <div>
+      <FormattedDate value={date} />
+      <FormattedTime value={date} />
+    </div>
+  );
+}
+```
+
+### Number Formatting
+```tsx
+import { FormattedNumber } from 'react-intl';
+
+function PriceDisplay({ amount }: { amount: number }) {
+  return (
+    <FormattedNumber
+      value={amount}
+      style="currency"
+      currency="USD"
+    />
+  );
+}
+```
+
+## Accessibility
+
+### Screen Reader Support
+```tsx
+function AccessibleButton() {
+  const intl = useIntl();
+
+  return (
+    <button
+      aria-label={intl.formatMessage({ id: 'actions.save' })}
+      title={intl.formatMessage({ id: 'actions.save.tooltip' })}
+    >
+      <FormattedMessage id="actions.save" />
+    </button>
+  );
+}
+```
+
+## Best Practices
+
+### Message Organization
+- Group messages by feature/domain
+- Use consistent key naming across features
+- Separate UI text from content text
+- Keep messages concise but descriptive
+
+### Context Considerations
+- Provide enough context in message keys
+- Consider gender, pluralization, and cultural differences
+- Use neutral language where possible
+- Test with longer translations (German, etc.)
+
+### Performance Tips
+- Messages are loaded asynchronously for non-default locales
+- Default locale messages are available immediately
+- Use React.memo() for components with many FormattedMessage calls
+
+### Translation Guidelines
+- Write messages in clear, simple language
+- Avoid technical jargon in user-facing messages
+- Provide context comments for translators when needed
+- Consider string length variations across languages
+
+## Testing
+
+### Testing Internationalized Components
+```tsx
+import { IntlProvider } from 'react-intl';
+import { render } from '@testing-library/react';
+
+const messages = {
+  'test.message': 'Test Message'
+};
+
+function renderWithIntl(component: ReactElement) {
+  return render(
+    <IntlProvider locale="en" messages={messages}>
+      {component}
+    </IntlProvider>
+  );
+}
+
+```

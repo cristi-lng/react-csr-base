@@ -1,0 +1,163 @@
+---
+description: TanStack Router & Query Rules
+globs:
+alwaysApply: false
+---
+# TanStack Router & Query Rules
+
+## Routing (TanStack Router)
+
+### Route Definition
+- Define routes in feature `index.tsx` files
+- Use `createRoute` with proper parent route relationships
+- Always specify `getParentRoute` correctly
+- Use meaningful path names
+
+### Route Structure Example
+```tsx
+import { createRoute, lazyRouteComponent } from '@tanstack/react-router';
+import { layoutRoute } from '~bootstrap';
+
+const featureRoute = createRoute({
+  getParentRoute: () => layoutRoute,
+  path: '/feature',
+  staticData: {
+    underSection: 'feature', // for navigation context
+  },
+  loader: featureLoader, // for data prefetching
+  component: lazyRouteComponent(() => import('./pages/FeaturePage'), 'FeaturePage'),
+});
+```
+
+### Route Loaders
+- Implement route loaders for data prefetching
+- Use `queryClient.ensureQueryData()` in loaders
+- Handle errors appropriately in loaders
+- Keep loaders focused on essential data only
+
+### Loader Example
+```tsx
+import { queryClient } from 'src/api/queryProvider';
+import { featureQueries } from './api/featureQueries';
+
+function featureLoader() {
+  const getFeatureOptions = featureQueries.getFeatureOptions();
+  return queryClient.ensureQueryData(getFeatureOptions);
+}
+```
+
+### Code Splitting
+- Use `lazyRouteComponent` for route-level code splitting
+- Import components dynamically for better performance
+- Keep route components in `pages/` folder within features
+
+### Navigation
+- Use TanStack Router hooks for navigation (`useNavigate`, `useRouter`)
+- Use `Link` component for internal navigation
+- Implement proper back navigation where needed
+
+## Data Fetching (TanStack Query)
+
+### Query Organization
+- Create query option builders in `[feature]/api/[feature]Queries.ts`
+- Organize queries by feature/domain
+- Use consistent naming conventions
+
+### Query Keys
+- Create query keys in organized structures
+- Use the established pattern from `src/stores/queryKeys/`
+- Make query keys hierarchical and descriptive
+
+### Query Options Pattern
+```tsx
+import { UseQueryOptions } from '@tanstack/react-query';
+
+export const featureQueries = {
+  getFeatureOptions: (id?: string): UseQueryOptions<Feature> => ({
+    queryKey: ['features', id].filter(Boolean),
+    queryFn: () => featureService.getFeature(id),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  }),
+
+  getFeatureListOptions: (): UseQueryOptions<Feature[]> => ({
+    queryKey: ['features'],
+    queryFn: () => featureService.getFeatureList(),
+    staleTime: 2 * 60 * 1000, // 2 minutes
+  }),
+};
+```
+
+### Component Usage
+- Use `useSuspenseQuery` in components for better UX
+- Use regular `useQuery` only when you need manual control
+- Handle error states with error boundaries
+- Use proper TypeScript typing for query results
+
+### Component Example
+```tsx
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { featureQueries } from '../api/featureQueries';
+
+function FeaturePage() {
+  const getFeatureOptions = featureQueries.getFeatureOptions();
+  const { data: feature } = useSuspenseQuery(getFeatureOptions);
+
+  return (
+    <div>
+      <h1>{feature.title}</h1>
+      {/* render feature */}
+    </div>
+  );
+}
+```
+
+### Error Handling
+- Use `DisplayError` for user-facing errors with i18n keys
+- Implement proper error boundaries at route level
+- Handle network errors gracefully
+- Provide meaningful error messages
+
+### Caching Strategy
+- Set appropriate `staleTime` for different data types
+- Use `cacheTime` for memory management
+- Implement proper invalidation strategies
+- Consider using optimistic updates for mutations
+
+### Mutations
+- Create mutation hooks for data updates
+- Handle loading states during mutations
+- Implement proper error handling
+- Invalidate relevant queries after successful mutations
+
+### Mutation Example
+```tsx
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+function useUpdateFeature() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: UpdateFeatureData) => featureService.updateFeature(data),
+    onSuccess: (updatedFeature) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['features'] });
+      // Or update cache directly
+      queryClient.setQueryData(['features', updatedFeature.id], updatedFeature);
+    },
+    onError: (error) => {
+      // Handle error appropriately
+      throw new DisplayError({
+        title: 'feature.update.error.title',
+        details: 'feature.update.error.details'
+      });
+    },
+  });
+}
+```
+
+## Loading States
+- Use Suspense boundaries for loading states
+- Implement skeleton screens where appropriate
+- Use the established `Loading` component for general loading
+
+- Handle loading states consistently across the app

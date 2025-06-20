@@ -1,0 +1,289 @@
+---
+description: React Performance & Optimization Rules
+globs:
+alwaysApply: false
+---
+# Performance & Optimization Rules
+
+## Bundle Optimization
+
+### Code Splitting
+- Use `lazyRouteComponent` for route-level splitting
+- Implement dynamic imports for large dependencies
+- Split by routes, not by components unless necessary
+- Avoid loading unnecessary code upfront
+
+### Route-Level Splitting Example
+```tsx
+import { createRoute, lazyRouteComponent } from '@tanstack/react-router';
+
+const featureRoute = createRoute({
+  // ...
+  component: lazyRouteComponent(() => import('./pages/FeaturePage'), 'FeaturePage'),
+});
+```
+
+### Dynamic Component Loading
+```tsx
+// For heavy components
+const HeavyComponent = lazy(() => import('./HeavyComponent'));
+
+function ParentComponent() {
+  return (
+    <Suspense fallback={<Loading />}>
+      {showHeavy && <HeavyComponent />}
+    </Suspense>
+  );
+}
+```
+
+## Asset Optimization
+
+### Image Optimization
+- Use appropriate image formats (WebP, AVIF when supported)
+- Implement proper image sizing and loading strategies
+- Use the configured asset inlining (4KB limit for non-fonts)
+
+### Font Optimization
+- Use variable fonts (already configured)
+- Preload critical fonts in index.html
+- Use font-display: swap for better perceived performance
+
+### CSS Optimization
+- Use CSS Modules to avoid global pollution
+- Leverage SCSS variables and mixins for consistency
+- Avoid deep nesting (max 3 levels)
+- Use efficient selectors
+
+## React Performance
+
+### Component Optimization
+- Use React.memo() for expensive components
+- Implement proper dependency arrays in useEffect, useMemo, useCallback
+- Avoid inline objects and functions in render
+
+### Memoization Best Practices
+```tsx
+import { memo, useMemo, useCallback } from 'react';
+
+const ExpensiveComponent = memo(function ExpensiveComponent({
+  items,
+  onItemClick
+}: Props) {
+  const expensiveValue = useMemo(() => {
+    return items.reduce((acc, item) => acc + item.value, 0);
+  }, [items]);
+
+  const handleClick = useCallback((id: string) => {
+    onItemClick(id);
+  }, [onItemClick]);
+
+  return (
+    <div>
+      {/* render component */}
+    </div>
+  );
+});
+```
+
+### Avoid Common Anti-Patterns
+```tsx
+// ❌ Bad - creates new object on every render
+<Component style={{ margin: 10 }} />
+
+// ✅ Good - stable reference
+const styles = { margin: 10 };
+<Component style={styles} />
+
+// ❌ Bad - inline function
+<Component onClick={() => handleClick(id)} />
+
+// ✅ Good - stable reference
+const handleItemClick = useCallback(() => handleClick(id), [id, handleClick]);
+<Component onClick={handleItemClick} />
+```
+
+## Data Fetching Performance
+
+### TanStack Query Optimization
+- Set appropriate `staleTime` values
+- Use `select` option to transform data
+- Implement proper caching strategies
+- Use `suspenseQuery` for better UX
+
+### Query Configuration
+```tsx
+export const optimizedQueries = {
+  getDataOptions: (): UseQueryOptions<Data> => ({
+    queryKey: ['data'],
+    queryFn: fetchData,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    select: (data) => data.items, // Transform data
+    refetchOnWindowFocus: false,
+  }),
+};
+```
+
+### Route Loader Optimization
+```tsx
+function optimizedLoader() {
+  // Prefetch critical data only
+  const criticalDataOptions = queries.getCriticalDataOptions();
+
+  // Don't await non-critical data
+  queryClient.prefetchQuery(queries.getNonCriticalDataOptions());
+
+  return queryClient.ensureQueryData(criticalDataOptions);
+}
+```
+
+## Loading States & UX
+
+### Progressive Loading
+- Show skeleton screens for better perceived performance
+- Use the existing content placeholder for initial load
+- Implement proper loading states hierarchy
+
+### Loading Priority
+```tsx
+// 1. Critical above-the-fold content
+const { data: criticalData } = useSuspenseQuery(criticalQuery);
+
+// 2. Secondary content with separate loading state
+const { data: secondaryData, isLoading } = useQuery(secondaryQuery);
+
+return (
+  <div>
+    <CriticalContent data={criticalData} />
+    {isLoading ? <SkeletonLoader /> : <SecondaryContent data={secondaryData} />}
+  </div>
+);
+```
+
+### Skeleton Implementation
+```scss
+.skeleton {
+  background: var(--color-neutral-weak-30);
+  border-radius: var(--space-light-xxs);
+  animation: skeleton-loading 1.5s infinite;
+
+  &_text {
+    height: 1em;
+    margin-bottom: var(--space-light-xs);
+  }
+
+  &_title {
+    height: 1.5em;
+    width: 60%;
+  }
+}
+
+@keyframes skeleton-loading {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+```
+
+## Memory Management
+
+### Cleanup Patterns
+- Clean up event listeners in useEffect
+- Cancel pending requests on unmount
+- Use proper dependency arrays to prevent memory leaks
+
+### Effect Cleanup Example
+```tsx
+useEffect(() => {
+  const controller = new AbortController();
+
+  fetchData({ signal: controller.signal })
+    .then(setData)
+    .catch((error) => {
+      if (error.name !== 'AbortError') {
+        setError(error);
+      }
+    });
+
+  return () => {
+    controller.abort();
+  };
+}, []);
+```
+
+## Responsive Performance
+
+### Media Query Optimization
+- Use `useMatchMediaQuery` hook for responsive logic
+- Minimize layout shifts with proper CSS
+- Implement mobile-first responsive design
+
+### Responsive Component Loading
+```tsx
+function ResponsiveFeature() {
+  const isMobile = !useMatchMediaQuery(cssExports.mediaMdAbove);
+
+  // Load different components based on screen size
+  return isMobile ? <MobileOptimizedView /> : <DesktopView />;
+}
+```
+
+## Build Performance
+
+### Vite Configuration Optimization
+- Use the configured build options (see build/buildOptions.ts)
+- Leverage tree shaking with proper imports
+- Use the minification plugins correctly configured
+
+### Import Optimization
+```tsx
+// ❌ Bad - imports entire library
+import _ from 'lodash';
+
+// ✅ Good - imports specific function
+import { debounce } from 'lodash/debounce';
+
+// ✅ Better - use native alternatives when possible
+const debounce = (fn: Function, delay: number) => { /* implementation */ };
+```
+
+## Monitoring & Measurement
+
+### Performance Monitoring
+- Use React DevTools Profiler for component analysis
+- Monitor Core Web Vitals in production
+- Use browser performance tools for bottleneck identification
+
+### Key Metrics to Monitor
+- First Contentful Paint (FCP)
+- Largest Contentful Paint (LCP)
+- Time to Interactive (TTI)
+- Bundle size and load times
+- Memory usage patterns
+
+## Accessibility Performance
+
+### A11y Optimization
+- Use semantic HTML to reduce screen reader processing
+- Implement proper focus management
+- Avoid unnecessary ARIA attributes
+- Test with keyboard navigation
+
+## Network Performance
+
+### Request Optimization
+- Use the configured axios interceptors
+- Implement proper error handling to avoid retry storms
+- Use appropriate HTTP caching headers
+- Minimize payload sizes
+
+### Example Optimized Request
+```tsx
+// Use select to minimize data processing
+const { data: userNames } = useQuery({
+  queryKey: ['users'],
+  queryFn: fetchUsers,
+  select: (users) => users.map(user => user.name), // Only extract needed data
+  staleTime: 10 * 60 * 1000, // Cache for 10 minutes
+});
+
+```

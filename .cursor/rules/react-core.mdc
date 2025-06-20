@@ -1,0 +1,58 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# React CSR Base - Core Rules
+
+This is a React client-side application using modern tools and feature-based architecture.
+
+## Tech Stack
+- React 19 with TypeScript
+- TanStack Router for routing
+- TanStack Query for data fetching
+- Zustand for state management
+- SCSS Modules for styling
+- React Intl for internationalization
+- Vite for build tooling
+
+## Architecture Principles
+
+### Feature-Based Organization
+- All features live in `src/features/[featureName]/`
+- Each feature has an `index.tsx` file as its public API
+- Private feature modules cannot be imported directly from outside
+- Use `~featureName` alias for feature imports (e.g., `import { foo } from '~bootstrap'`)
+
+### Import Rules
+- NO relative imports (../../) - use absolute paths from 'src/'
+- NO default exports - use named exports only
+- Import axios ONLY from 'src/api/axiosProvider', never directly
+- Use established path aliases: 'src/' and '~featureName'
+
+### Code Quality Standards
+- Follow ESLint rules strictly (configured in eslint.config.js)
+- Use Prettier formatting (120 char width, single quotes, semicolons)
+- TypeScript strict mode enabled - fix type errors, don't bypass
+- Write meaningful component and variable names
+- Keep files focused and under 200 lines when possible
+
+## File Naming Conventions
+- Components: `componentName.tsx`
+- Styles: `componentName.module.scss`
+- Tests: `componentName.test.tsx`
+- Types: `types.ts` or `[feature]Types.ts`
+- API: `[feature]Queries.ts` for TanStack Query
+
+## Error Handling
+- Use `DisplayError` for user-facing errors with i18n keys
+- Use `APIError` for backend API errors
+- Implement error boundaries at route and feature levels
+- Always handle loading and error states in components
+
+## Performance Guidelines
+- Use `lazyRouteComponent` for route-level code splitting
+- Implement proper loading states and Suspense boundaries
+- Use React.memo() for expensive components
+
+- Optimize bundle size and avoid unnecessary dependencies

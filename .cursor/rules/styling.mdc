@@ -1,0 +1,288 @@
+---
+description: SCSS & Styling Rules
+globs:
+alwaysApply: false
+---
+# SCSS & Styling Rules
+
+## SCSS Modules
+
+### File Structure
+- Use SCSS modules for component styling: `componentName.module.scss`
+- Import styles as: `import classes from './componentName.module.scss'`
+- Keep styles colocated with components
+- Use global styles only for true global concerns
+
+### Naming Convention
+- Follow BEM-inspired naming: `componentName_element_modifier`
+- Use camelCase for CSS class names
+- Be descriptive but concise
+
+### Example Structure
+```scss
+.componentName {
+  // base component styles
+
+  &_element {
+    // element styles
+  }
+
+  &_modifier {
+    // modifier styles
+  }
+
+  &_element_modifier {
+    // element with modifier
+  }
+}
+```
+
+### Usage in Components
+```tsx
+import classes from './componentName.module.scss';
+import classNames from 'classnames';
+
+function ComponentName({ isActive, variant }: Props) {
+  return (
+    <div className={classNames(
+      classes.componentName,
+      isActive && classes.componentName_active,
+      classes[`componentName_${variant}`]
+    )}>
+      <span className={classes.componentName_label}>Label</span>
+    </div>
+  );
+}
+```
+
+## CSS Custom Properties (Variables)
+
+### Usage
+- Use CSS custom properties from the design system
+- Available in `src/styles/varSystem/`
+- Don't hardcode colors, spacing, or font sizes
+
+### Variable Categories
+```scss
+// Colors
+var(--color-primary-base)
+var(--color-primary-weak-10)
+var(--color-neutral-base)
+var(--color-text-base)
+
+// Spacing
+var(--space-light-xs)   // 4px
+var(--space-light-sm)   // 8px
+var(--space-light-md)   // 12px
+var(--space-heavy-lg)   // 32px
+
+// Font
+var(--font-primary)
+var(--font-size-sm)
+var(--font-size-md)
+var(--font-weight-bold)
+
+// Sizes
+var(--size-width-xs)
+var(--size-width-xl)
+```
+
+## Responsive Design
+
+### Mobile-First Approach
+- Design for mobile first, then add larger screen styles
+- Use established breakpoints from `src/styles/preprocessor/media.scss`
+
+### Media Query Usage
+```scss
+.component {
+  // mobile styles (default)
+
+  @media #{$media-md-above} {
+    // tablet styles
+  }
+
+  @media #{$media-lg-above} {
+    // desktop styles
+  }
+}
+```
+
+### Available Breakpoints
+```scss
+$media-xs-above: '(min-width: 20rem)';   // 320px
+$media-sm-above: '(min-width: 30rem)';   // 480px
+$media-md-above: '(min-width: 48rem)';   // 768px
+$media-lg-above: '(min-width: 64rem)';   // 1024px
+$media-xl-above: '(min-width: 90rem)';   // 1440px
+$media-xxl-above: '(min-width: 120rem)'; // 1920px
+```
+
+### JavaScript Responsive Logic
+```tsx
+import { useMatchMediaQuery } from 'src/hooks/useMatchMediaQuery';
+import cssExports from 'src/styles/preprocessor/exports.module.scss';
+
+function ResponsiveComponent() {
+  const isMobile = !useMatchMediaQuery(cssExports.mediaMdAbove);
+
+  return isMobile ? <MobileLayout /> : <DesktopLayout />;
+}
+```
+
+## Mixins and Utilities
+
+### Available Mixins
+```scss
+// From src/styles/preprocessor/mixins.scss
+@include full-page-height;
+@include absolute-fit;
+```
+
+### Usage
+```scss
+.component {
+  @include full-page-height;
+
+  &_overlay {
+    @include absolute-fit;
+  }
+}
+```
+
+## Layout Patterns
+
+### Flexbox
+```scss
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-light-md);
+
+  @media #{$media-md-above} {
+    flex-direction: row;
+  }
+}
+```
+
+### Grid
+```scss
+.grid {
+  display: grid;
+  gap: var(--space-light-md);
+
+  @media #{$media-lg-above} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+```
+
+## Animation Guidelines
+
+### CSS Animations
+- Use CSS animations for simple interactions
+- Keep animations subtle and performant
+- Use `transform` and `opacity` for better performance
+
+### Example Animation
+```scss
+.component {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &_loading {
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+```
+
+## Accessibility
+
+### Focus States
+- Always provide visible focus states
+- Use proper contrast ratios
+- Test with keyboard navigation
+
+```scss
+.button {
+  &:focus {
+    outline: 2px solid var(--color-primary-base);
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+```
+
+### Screen Reader Support
+- Use semantic HTML elements
+- Provide proper ARIA attributes when needed
+- Hide decorative elements from screen readers
+
+## Performance Best Practices
+
+### CSS Optimization
+- Avoid deep nesting (max 3 levels)
+- Use efficient selectors
+- Minimize use of `!important`
+- Group related styles together
+
+### Bundle Size
+- Import only needed styles
+- Use CSS Modules to avoid global pollution
+- Leverage tree shaking with modular imports
+
+## Common Patterns
+
+### Card Component
+```scss
+.card {
+  background: var(--color-neutral-weak-max);
+  border-radius: var(--space-light-sm);
+  box-shadow: 0 1px 3px var(--color-neutral-weak-10);
+  padding: var(--space-light-lg);
+
+  &_header {
+    margin-bottom: var(--space-light-md);
+    font-weight: var(--font-weight-bold);
+  }
+}
+```
+
+### Form Styling
+```scss
+.form {
+  &_field {
+    margin-bottom: var(--space-light-lg);
+  }
+
+  &_label {
+    display: block;
+    margin-bottom: var(--space-light-xs);
+    font-weight: var(--font-weight-semiBold);
+  }
+
+  &_input {
+    width: 100%;
+    padding: var(--space-light-sm);
+    border: 1px solid var(--color-neutral-weak-20);
+    border-radius: var(--space-light-xxs);
+
+    &:focus {
+      border-color: var(--color-primary-base);
+      outline: none;
+    }
+  }
+}
+
+```

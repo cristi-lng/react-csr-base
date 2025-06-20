@@ -1,0 +1,108 @@
+---
+description: Testing Rules
+globs:
+alwaysApply: false
+---
+# Testing Rules
+
+## Testing Philosophy
+
+### Test Strategy
+- Write tests that focus on behavior, not implementation
+- Test user interactions and outcomes
+- Use Testing Library's user-centric approach
+- Prioritize integration tests over unit tests for React components
+
+### Test File Organization
+- Place tests next to components: `component.test.tsx`
+- Use descriptive test names that explain the behavior
+- Group related tests with `describe` blocks
+- Keep tests focused and single-purpose
+
+## Component Testing
+
+### Basic Component Test Structure
+```tsx
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { ComponentName } from './ComponentName';
+
+describe('ComponentName', () => {
+  it('should render with required props', () => {
+    render(<ComponentName title="Test Title" />);
+
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+  });
+
+  it('should handle user interactions', async () => {
+    const user = userEvent.setup();
+    const handleClick = vi.fn();
+
+    render(<ComponentName onClick={handleClick} />);
+
+    await user.click(screen.getByRole('button'));
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+### Testing with Context
+```tsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { IntlProvider } from 'react-intl';
+
+function createTestQueryClient() {
+  return new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+      mutations: { retry: false },
+    },
+  });
+}
+
+function renderWithProviders(ui: ReactElement) {
+  const queryClient = createTestQueryClient();
+  const messages = { 'test.key': 'Test Message' };
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <IntlProvider locale="en" messages={messages}>
+        {ui}
+      </IntlProvider>
+    </QueryClientProvider>
+  );
+}
+```
+
+## Testing Best Practices
+
+### Query Selectors
+```tsx
+// ✅ Prefer accessible queries
+screen.getByRole('button', { name: /submit/i })
+screen.getByLabelText(/email address/i)
+screen.getByText(/welcome message/i)
+
+// ⚠️ Use data-testid as last resort
+screen.getByTestId('complex-component')
+
+// ❌ Avoid implementation details
+container.querySelector('.css-class')
+```
+
+### Async Testing
+```tsx
+// ✅ Use findBy for async elements
+expect(await screen.findByText('Loaded data')).toBeInTheDocument();
+
+// ✅ Use waitFor for complex async operations
+await waitFor(() => {
+  expect(mockFunction).toHaveBeenCalled();
+});
+
+// ✅ Use userEvent for user interactions
+const user = userEvent.setup();
+await user.click(button);
+
+```

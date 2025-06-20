@@ -1,0 +1,136 @@
+---
+description: React & TypeScript Rules
+globs:
+alwaysApply: false
+---
+# React & TypeScript Rules
+
+## React Component Patterns
+
+### Component Structure
+- Use function components with hooks, NOT class components
+- Keep components focused and single-responsibility
+- Use React.memo() for performance optimization when appropriate
+- Prefer composition over inheritance
+
+### Component Example Template
+```tsx
+import { ReactNode } from 'react';
+import classes from './componentName.module.scss';
+
+interface ComponentNameProps {
+  children?: ReactNode;
+  // other props
+}
+
+function ComponentName({ children, ...props }: ComponentNameProps) {
+  return (
+    <div className={classes.componentName}>
+      {children}
+    </div>
+  );
+}
+
+export { ComponentName };
+```
+
+### Hooks Rules
+- Use built-in hooks appropriately (useState, useEffect, useMemo, useCallback)
+- Create custom hooks for reusable logic
+- Follow hooks naming convention (use prefix)
+- Don't call hooks inside loops, conditions, or nested functions
+
+### Data Fetching in Components
+- Prefer `useSuspenseQuery` over `useQuery` for components
+- Use `useQuery` only in providers or when you need manual control
+- Handle loading states with Suspense boundaries
+- Always handle error states
+
+## TypeScript Standards
+
+### Type Definitions
+- Type ALL function parameters and return values
+- Use interfaces for object types
+- Use type aliases for unions, primitives, and complex types
+- Avoid 'any' type - use proper typing or 'unknown'
+
+### Interface vs Type Usage
+```tsx
+// Use interfaces for object shapes
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+// Use types for unions, primitives, computed types
+type Status = 'loading' | 'success' | 'error';
+type UserWithStatus = User & { status: Status };
+```
+
+### Generic Types
+- Use generics for reusable components and functions
+- Provide default types when appropriate
+- Use descriptive generic names (T, K, V are fine for simple cases)
+
+### Props Typing
+```tsx
+interface ComponentProps {
+  // Required props
+  title: string;
+  onSubmit: (data: FormData) => void;
+
+  // Optional props
+  description?: string;
+  isLoading?: boolean;
+
+  // Children
+  children?: ReactNode;
+
+  // Event handlers
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+}
+```
+
+## State Management
+
+### Local State (useState)
+- Use useState for component-specific state
+- Prefer multiple useState calls over complex state objects
+- Use useReducer for complex state logic
+
+### Global State (Zustand)
+- Use Zustand stores for global client state
+- NOT for server state (use TanStack Query instead)
+- Use selectors to prevent unnecessary re-renders
+- Keep stores focused and single-purpose
+
+### Example Store Structure
+```tsx
+interface StoreState {
+  // state properties
+}
+
+interface StoreActions {
+  // action methods
+}
+
+type Store = StoreState & StoreActions;
+
+const useStore = create<Store>((set, get) => ({
+  // implementation
+}));
+```
+
+## Event Handling
+- Use proper TypeScript event types
+- Prevent default when necessary
+- Handle async operations properly in event handlers
+- Use useCallback for event handlers passed to children
+
+## Form Handling
+- Use react-hook-form for form management
+- Implement proper validation
+- Handle form submission errors
+
+- Use proper form accessibility attributes
