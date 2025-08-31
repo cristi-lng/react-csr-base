@@ -1,4 +1,4 @@
-import { Account } from 'src/types/account';
+import type { Account } from 'src/types/account';
 import { accountApi } from '~bootstrap/api/accountApi';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 

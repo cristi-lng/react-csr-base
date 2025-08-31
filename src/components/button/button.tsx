@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes } from 'react';
-import { Link, LinkProps } from '@tanstack/react-router';
+import type { ButtonHTMLAttributes } from 'react';
+import { Link, type LinkProps } from '@tanstack/react-router';
 import classNames from 'classnames';
 
 import classes from './button.module.scss';

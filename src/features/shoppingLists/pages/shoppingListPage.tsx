@@ -12,7 +12,7 @@ function ShoppingListPage() {
 
   return (
     <>
-      <PageHeader title="listDetails" back="/" />
+      <PageHeader title="listDetails" back={{ to: '/' }} />
       <ShoppingListView shoppingList={shoppingList} />
     </>
   );

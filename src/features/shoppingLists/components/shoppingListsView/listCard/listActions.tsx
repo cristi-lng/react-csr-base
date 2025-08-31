@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { FormattedMessage } from 'react-intl';
 
-import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 import { shoppingListsApi } from '~shoppingLists/api/shoppingListsApi';
 import { queryClient } from 'src/api/queryProvider';
 import { shoppingListsKeys } from 'src/stores/queryKeys/shoppingListsKeys';

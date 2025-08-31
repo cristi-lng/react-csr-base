@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import classNames from 'classnames';
 
 import classes from './inputText.module.scss';
@@ -8,14 +8,8 @@ type InputTextProps = InputHTMLAttributes<HTMLInputElement> & {
   invalid?: boolean;
 };
 
-const InputText = forwardRef<HTMLInputElement, InputTextProps>(({ invalid, ...rest }, ref) => {
-  return (
-    <input
-      {...rest}
-      ref={ref}
-      className={classNames(classes.inputText, { [classes.invalid]: invalid }, rest.className)}
-    />
-  );
-});
+function InputText({ invalid, ...rest }: InputTextProps) {
+  return <input {...rest} className={classNames(classes.inputText, { [classes.invalid]: invalid }, rest.className)} />;
+}
 
 export { InputText, type InputTextProps };

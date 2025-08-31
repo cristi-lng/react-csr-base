@@ -1,5 +1,9 @@
-import { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
-import { ListFormData, ItemFormData, ItemsStats } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
+import {
+  type ListFormData,
+  type ItemFormData,
+  ItemsStats,
+} from '~shoppingLists/components/shoppingListView/listFormData';
 
 class ListFormService {
   computeInitData(shoppingList: ShoppingListDetails | null): ListFormData {

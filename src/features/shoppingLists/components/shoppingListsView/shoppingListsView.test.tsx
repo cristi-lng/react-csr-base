@@ -4,7 +4,7 @@ import { userEvent } from '@testing-library/user-event';
 import { LinkMock } from 'src/testing/linkMock';
 import { ShoppingListsView } from '~shoppingLists/components/shoppingListsView/shoppingListsView';
 import { ComponentWrapper } from 'src/testing/componentWrapper';
-import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 import { shoppingListsApi } from '~shoppingLists/api/shoppingListsApi';
 
 vi.mock('@tanstack/react-router', () => ({

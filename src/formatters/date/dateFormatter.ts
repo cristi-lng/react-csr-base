@@ -1,4 +1,4 @@
-import { FormatDateArgs } from 'src/formatters/date/formatDateArgs';
+import type { FormatDateArgs } from 'src/formatters/date/formatDateArgs';
 
 class DateFormatter {
   format({ date, locale }: FormatDateArgs) {

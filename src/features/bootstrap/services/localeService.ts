@@ -1,4 +1,4 @@
-import { Locale } from 'src/types/locale';
+import type { Locale } from 'src/types/locale';
 import { LOCALE_OPTIONS } from 'src/constants/constants';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { accountApi } from '~bootstrap/api/accountApi';

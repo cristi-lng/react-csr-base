@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 import { FormatDate } from 'src/formatters/date/formatDate';
 import { ProgressBar } from 'src/components/progressBar/progressBar';
 import { FormatAmount } from 'src/formatters/amount/formatAmount';

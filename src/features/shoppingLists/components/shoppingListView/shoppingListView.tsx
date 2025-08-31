@@ -1,7 +1,7 @@
 import { FormProvider } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
+import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
 import { useShoppingListView } from '~shoppingLists/components/shoppingListView/useShoppingListView';
 import { ListFields } from '~shoppingLists/components/shoppingListView/listFields/listFields';
 import { ItemsCard } from '~shoppingLists/components/shoppingListView/itemsCard/itemsCard';

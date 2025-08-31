@@ -1,5 +1,5 @@
-import { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
-import { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
 import { axios } from 'src/api/axiosProvider';
 
 class ShoppingListsApi {

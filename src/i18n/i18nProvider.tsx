@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react';
-import { IntlShape, RawIntlProvider, createIntl, createIntlCache } from 'react-intl';
-import { UseQueryOptions, useQuery } from '@tanstack/react-query';
+import type { PropsWithChildren } from 'react';
+import { type IntlShape, RawIntlProvider, createIntl, createIntlCache } from 'react-intl';
+import { type UseQueryOptions, useQuery } from '@tanstack/react-query';
 
-import { I18nMessages } from 'src/i18n/i18nMessages';
+import type { I18nMessages } from 'src/i18n/i18nMessages';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { specialKeys } from 'src/stores/queryKeys/specialKeys';

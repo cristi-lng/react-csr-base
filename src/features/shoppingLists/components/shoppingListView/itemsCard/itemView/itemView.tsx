@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
 
-import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { InputCheckbox } from 'src/components/inputCheckbox/inputCheckbox';
 import { FormatAmount } from 'src/formatters/amount/formatAmount';
 import classes from './itemView.module.scss';

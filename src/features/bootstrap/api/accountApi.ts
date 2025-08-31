@@ -1,4 +1,4 @@
-import { Account } from 'src/types/account';
+import type { Account } from 'src/types/account';
 import { axios } from 'src/api/axiosProvider';
 
 class AccountApi {

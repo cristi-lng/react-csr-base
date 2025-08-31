@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { QueryProvider } from 'src/api/queryProvider';
 import { I18nProvider } from 'src/i18n/i18nProvider';

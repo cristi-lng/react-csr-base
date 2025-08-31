@@ -1,12 +1,12 @@
-import { RegisteredRouter, RoutePaths } from '@tanstack/react-router';
+import type { RegisteredRouter, ValidateLinkOptions } from '@tanstack/react-router';
 
 type SectionName = 'shoppingLists' | 'products' | 'categories' | 'settings';
 
-type Section = {
+type Section<TRouter extends RegisteredRouter = RegisteredRouter, TOptions = unknown> = {
   name: SectionName;
   icon: string;
   label: string;
-  path: RoutePaths<RegisteredRouter['routeTree']>;
+  link: ValidateLinkOptions<TRouter, TOptions>;
 };
 
 export { type Section, type SectionName };

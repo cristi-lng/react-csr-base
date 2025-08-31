@@ -1,5 +1,5 @@
-import { Locale } from 'src/types/locale';
-import { I18nMessages } from 'src/i18n/i18nMessages';
+import type { Locale } from 'src/types/locale';
+import type { I18nMessages } from 'src/i18n/i18nMessages';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
 import enUsMessages from 'src/assets/i18n/i18n-en_US.json';
 

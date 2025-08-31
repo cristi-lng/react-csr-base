@@ -1,13 +1,13 @@
-import { AnyRouteMatch } from '@tanstack/react-router';
+import type { AnyRouteMatch } from '@tanstack/react-router';
 
-import { Section } from '~bootstrap/types/section';
+import type { Section } from '~bootstrap/types/section';
 
 class SectionsService {
   #sections: Section[] = [
-    { name: 'shoppingLists', icon: 'icon-list', label: 'shoppingLists', path: '/' },
-    { name: 'products', icon: 'icon-fast-food', label: 'products', path: '/products' },
-    { name: 'categories', icon: 'icon-tags', label: 'categories', path: '/categories' },
-    { name: 'settings', icon: 'icon-cog', label: 'settings', path: '/settings' },
+    { name: 'shoppingLists', icon: 'icon-list', label: 'shoppingLists', link: { to: '/' } },
+    { name: 'products', icon: 'icon-fast-food', label: 'products', link: { to: '/products' } },
+    { name: 'categories', icon: 'icon-tags', label: 'categories', link: { to: '/categories' } },
+    { name: 'settings', icon: 'icon-cog', label: 'settings', link: { to: '/settings' } },
   ];
 
   getSections() {

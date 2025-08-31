@@ -1,7 +1,7 @@
 import { useFieldArray } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { ItemsStatsView } from '~shoppingLists/components/shoppingListView/itemsCard/itemsStatsView/itemsStatsView';
 import { ItemView } from '~shoppingLists/components/shoppingListView/itemsCard/itemView/itemView';
 import { AddItemForm } from '~shoppingLists/components/shoppingListView/itemsCard/addItemForm/addItemForm';

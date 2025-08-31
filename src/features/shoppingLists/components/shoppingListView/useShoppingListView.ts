@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from '@tanstack/react-router';
 import { useMutation } from '@tanstack/react-query';
 
-import { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
-import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
+import type { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { listFormService } from '~shoppingLists/components/shoppingListView/listFormService';
 import { shoppingListsApi } from '~shoppingLists/api/shoppingListsApi';
 import { queryClient } from 'src/api/queryProvider';

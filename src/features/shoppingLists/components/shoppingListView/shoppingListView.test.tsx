@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
 import { LinkMock } from 'src/testing/linkMock';
-import { ShoppingListDetails, ShoppingListItem } from '~shoppingLists/types/shoppingListDetails';
+import type { ShoppingListDetails, ShoppingListItem } from '~shoppingLists/types/shoppingListDetails';
 import { ShoppingListView } from '~shoppingLists/components/shoppingListView/shoppingListView';
 import { ComponentWrapper } from 'src/testing/componentWrapper';
 import { shoppingListsApi } from '~shoppingLists/api/shoppingListsApi';

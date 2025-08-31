@@ -1,18 +1,18 @@
 import { FormattedMessage } from 'react-intl';
-import { Link, RegisteredRouter, RoutePaths } from '@tanstack/react-router';
+import { Link, type RegisteredRouter, type ValidateLinkOptions } from '@tanstack/react-router';
 
 import classes from './pageHeader.module.scss';
 
-type PageHeaderProps = {
+type PageHeaderProps<TRouter extends RegisteredRouter = RegisteredRouter, TOptions = unknown> = {
   title: string;
-  back?: RoutePaths<RegisteredRouter['routeTree']>;
+  back?: ValidateLinkOptions<TRouter, TOptions>;
 };
 
 function PageHeader({ title, back }: PageHeaderProps) {
   return (
     <div className={classes.pageHeader}>
       {back && (
-        <Link to={back}>
+        <Link {...back}>
           <span className="icon-left"></span>
         </Link>
       )}

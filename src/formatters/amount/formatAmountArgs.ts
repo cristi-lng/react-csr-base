@@ -1,4 +1,4 @@
-import { Locale } from 'src/types/locale';
+import type { Locale } from 'src/types/locale';
 
 type FormatAmountArgs = {
   amount: number;

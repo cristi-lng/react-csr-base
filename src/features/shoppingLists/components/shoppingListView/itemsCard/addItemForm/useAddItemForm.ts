@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
-import { ItemFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ItemFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 
 function useAddItemForm({ addItem }: { addItem: (item: ItemFormData) => void }) {

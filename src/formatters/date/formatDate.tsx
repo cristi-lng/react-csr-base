@@ -1,4 +1,4 @@
-import { FormatDateArgs } from 'src/formatters/date/formatDateArgs';
+import type { FormatDateArgs } from 'src/formatters/date/formatDateArgs';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { dateFormatter } from 'src/formatters/date/dateFormatter';
 

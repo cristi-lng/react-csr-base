@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 
-import { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ListFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { listFormService } from '~shoppingLists/components/shoppingListView/listFormService';
 import { FormatAmount } from 'src/formatters/amount/formatAmount';
 import { ProgressBar } from 'src/components/progressBar/progressBar';

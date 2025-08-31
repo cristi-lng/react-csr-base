@@ -1,6 +1,6 @@
 import { useShallow } from 'zustand/shallow';
 
-import { FormatAmountArgs } from 'src/formatters/amount/formatAmountArgs';
+import type { FormatAmountArgs } from 'src/formatters/amount/formatAmountArgs';
 import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
 import { amountFormatter } from 'src/formatters/amount/amountFormatter';
 

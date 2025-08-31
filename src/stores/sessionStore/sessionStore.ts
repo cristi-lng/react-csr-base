@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { Locale } from 'src/types/locale';
-import { Account } from 'src/types/account';
+import type { Locale } from 'src/types/locale';
+import type { Account } from 'src/types/account';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
 
 type SessionStore = {

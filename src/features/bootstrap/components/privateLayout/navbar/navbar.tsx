@@ -24,8 +24,8 @@ function Navbar({ hideMenu }: { hideMenu?: () => void }) {
         {sections.map((section) => (
           <li key={section.name}>
             <Link
+              {...section.link}
               className={classNames(classes.navbar_link, { [classes.active]: section.name == currentSection?.name })}
-              to={section.path}
               onClick={() => hideMenu?.()}
             >
               <span className={section.icon} />

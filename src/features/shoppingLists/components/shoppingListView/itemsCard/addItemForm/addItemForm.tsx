@@ -1,4 +1,4 @@
-import { ItemFormData } from '~shoppingLists/components/shoppingListView/listFormData';
+import type { ItemFormData } from '~shoppingLists/components/shoppingListView/listFormData';
 import { useAddItemForm } from '~shoppingLists/components/shoppingListView/itemsCard/addItemForm/useAddItemForm';
 import { InputCheckbox } from 'src/components/inputCheckbox/inputCheckbox';
 import { InputText } from 'src/components/inputText/inputText';

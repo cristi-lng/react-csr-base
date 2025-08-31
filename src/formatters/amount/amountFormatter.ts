@@ -1,4 +1,4 @@
-import { FormatAmountArgs } from 'src/formatters/amount/formatAmountArgs';
+import type { FormatAmountArgs } from 'src/formatters/amount/formatAmountArgs';
 
 class AmountFormatter {
   format({ amount, currency, locale }: FormatAmountArgs) {
