@@ -1,7 +1,7 @@
 import tsEslint from 'typescript-eslint';
 import eslint from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
-import configPrettier from 'eslint-config-prettier';
+import configPrettier from 'eslint-config-prettier/flat';
 import globals from 'globals';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
@@ -12,7 +12,7 @@ export default tsEslint.config(
   {
     extends: [
       eslint.configs.recommended,
-      ...tsEslint.configs.recommended,
+      tsEslint.configs.recommended,
       importPlugin.flatConfigs.recommended,
       configPrettier,
     ],

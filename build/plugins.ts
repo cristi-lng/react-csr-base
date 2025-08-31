@@ -1,4 +1,4 @@
-import { PluginOption } from 'vite';
+import type { PluginOption } from 'vite';
 import checker from 'vite-plugin-checker';
 import react from '@vitejs/plugin-react-swc';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
