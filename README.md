@@ -67,17 +67,17 @@ Follow the steps below to install the application for development:
 - **Start the mock server**
   - open a terminal
   - go to the `mock` folder
-  - run `npm install`
-  - run `npm run dev`
+  - run `pnpm install`
+  - run `pnpm run dev`
 - **Start the application**
   - open another terminal
   - go to the root folder
-  - run `npm install`
-  - run `npm run dev`
+  - run `pnpm install`
+  - run `pnpm run dev`
 
 If everything was set up correctly, both the mocked backend server and the Vite frontend server should now be running.
 
-To create a production build, run `npm run build` in the root folder. To preview it in Vite, run `npm run preview`.
+To create a production build, run `pnpm run build` in the root folder. To preview it in Vite, run `pnpm run preview`.
 
 ## Building on top
 
