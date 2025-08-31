@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "node server"
+    "dev": "node server",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "json-server": "^0.17.4"

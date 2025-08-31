@@ -9,7 +9,8 @@
     "build": "tsc && vite build --config build/vite.config.ts",
     "preview": "vite preview --config build/vite.config.ts",
     "test": "vitest --config build/vite.config.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.11",

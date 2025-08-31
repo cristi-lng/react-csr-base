@@ -23,12 +23,13 @@
     "noUncheckedSideEffectImports": true,
 
     /* Global types */
-    "types": ["vitest/globals"],
+    "types": ["vite/client", "vitest/globals"],
 
     /* Aliases */
     "baseUrl": "./",
     "paths": {
-      "~*": ["src/features/*"]
+      "~*": ["src/features/*"],
+      "src/*": ["src/*"]
     }
   },
   "include": ["src"]
