@@ -1,6 +1,6 @@
 import type { Account } from 'src/types/account';
 import { accountApi } from '~bootstrap/api/accountApi';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $account, $currency, $locale } from 'src/stores/sessionStore/sessionStore';
 
 /**
  * This service contains the session initialization and management logic
@@ -19,10 +19,9 @@ class SessionService {
   }
 
   processAccount(account: Account) {
-    const { setLocale, setCurrency, setAccount } = useSessionStore.getState();
-    setLocale(account.locale);
-    setCurrency(account.currency);
-    setAccount(account);
+    $locale.set(account.locale);
+    $currency.set(account.currency);
+    $account.set(account);
   }
 }
 

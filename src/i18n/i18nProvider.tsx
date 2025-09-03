@@ -1,10 +1,11 @@
 import type { PropsWithChildren } from 'react';
+import { useStore } from '@nanostores/react';
 import { type IntlShape, RawIntlProvider, createIntl, createIntlCache } from 'react-intl';
 import { type UseQueryOptions, useQuery } from '@tanstack/react-query';
 
 import type { I18nMessages } from 'src/i18n/i18nMessages';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $locale } from 'src/stores/sessionStore/sessionStore';
 import { specialKeys } from 'src/stores/queryKeys/specialKeys';
 import { i18nMessagesBuilder } from 'src/i18n/i18nMessagesBuilder';
 
@@ -22,7 +23,7 @@ function I18nProvider({ children }: PropsWithChildren) {
    * until they arrive. This means that on slow networks it might take some time until the page is translated.
    * But this is desired behavior.
    */
-  const locale = useSessionStore((state) => state.locale);
+  const locale = useStore($locale);
   const { isSuccess, data: messages } = useQuery(messagesQueryOptions());
   if (isSuccess) {
     intl = createIntl({ locale, defaultLocale: locale, messages }, cache);

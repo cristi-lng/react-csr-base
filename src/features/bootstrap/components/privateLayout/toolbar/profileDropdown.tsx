@@ -1,16 +1,17 @@
+import { useStore } from '@nanostores/react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
 import { useMatchMediaQuery } from 'src/hooks/useMatchMediaQuery';
 import cssExports from 'src/styles/preprocessor/exports.module.scss';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $account } from 'src/stores/sessionStore/sessionStore';
 import { Dropdown } from 'src/components/dropdown/dropdown';
 import avatarPlaceholder from 'src/assets/images/avatar-placeholder.svg';
 import classes from './profileDropdown.module.scss';
 
 function ProfileDropdown() {
   const isMediumScreen = !useMatchMediaQuery(cssExports.mediaMdAbove);
-  const account = useSessionStore((state) => state.account);
+  const account = useStore($account);
 
   return (
     <Dropdown

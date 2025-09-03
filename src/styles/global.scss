@@ -1,6 +1,6 @@
-@use 'src/styles/fontDeclaration/quicksand.scss';
-@use 'src/styles/fontDeclaration/iconfont.scss';
-@use 'src/styles/generic/reset.scss';
+@import url('src/styles/fontDeclaration/quicksand.scss');
+@import url('src/styles/fontDeclaration/iconfont.scss');
+@import url('src/styles/generic/reset.scss');
 
 * {
   scrollbar-color: var(--color-neutral-weak-10) var(--color-neutral-weak-max);

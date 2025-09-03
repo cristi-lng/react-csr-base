@@ -1,27 +1,11 @@
-import { create } from 'zustand';
+import { atom } from 'nanostores';
 
 import type { Locale } from 'src/types/locale';
 import type { Account } from 'src/types/account';
 import { DEFAULT_LOCALE } from 'src/constants/constants';
 
-type SessionStore = {
-  readonly locale: Locale;
-  readonly currency: string;
-  readonly account: Account | undefined;
+const $locale = atom<Locale>(DEFAULT_LOCALE);
+const $currency = atom<string>('USD');
+const $account = atom<Account | undefined>(undefined);
 
-  readonly setLocale: (locale: Locale) => void;
-  readonly setCurrency: (currency: string) => void;
-  readonly setAccount: (account: Account | undefined) => void;
-};
-
-const useSessionStore = create<SessionStore>()((set) => ({
-  locale: DEFAULT_LOCALE,
-  currency: 'USD',
-  account: undefined,
-
-  setLocale: (locale: Locale) => set({ locale }),
-  setCurrency: (currency: string) => set({ currency }),
-  setAccount: (account: Account | undefined) => set({ account }),
-}));
-
-export { useSessionStore };
+export { $locale, $currency, $account };

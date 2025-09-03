@@ -1,6 +1,8 @@
+import { useStore } from '@nanostores/react';
+
 import { useMatchMediaQuery } from 'src/hooks/useMatchMediaQuery';
 import cssExports from 'src/styles/preprocessor/exports.module.scss';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $locale } from 'src/stores/sessionStore/sessionStore';
 import { localeService } from '~bootstrap/services/localeService';
 import { Dropdown } from 'src/components/dropdown/dropdown';
 import { LOCALE_OPTIONS } from 'src/constants/constants';
@@ -8,7 +10,7 @@ import classes from './localeSelector.module.scss';
 
 function LocaleSelector() {
   const isMediumScreen = !useMatchMediaQuery(cssExports.mediaMdAbove);
-  const currentLocale = useSessionStore((state) => state.locale);
+  const currentLocale = useStore($locale);
   const currentLocaleOption = localeService.findLocaleOption(currentLocale);
 
   return (
