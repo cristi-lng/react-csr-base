@@ -1,6 +1,6 @@
 import type { Locale } from 'src/types/locale';
 import { LOCALE_OPTIONS } from 'src/constants/constants';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $locale } from 'src/stores/sessionStore/sessionStore';
 import { accountApi } from '~bootstrap/api/accountApi';
 import { sessionService } from '~bootstrap/services/sessionService';
 
@@ -10,8 +10,8 @@ class LocaleService {
   }
 
   changeLocale(locale: Locale) {
-    if (locale != useSessionStore.getState().locale) {
-      useSessionStore.getState().setLocale(locale);
+    if (locale != $locale.get()) {
+      $locale.set(locale);
       this.#updateAccountLocale(locale);
     }
   }

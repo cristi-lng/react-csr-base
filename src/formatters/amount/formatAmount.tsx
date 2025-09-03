@@ -1,11 +1,12 @@
-import { useShallow } from 'zustand/shallow';
+import { useStore } from '@nanostores/react';
 
 import type { FormatAmountArgs } from 'src/formatters/amount/formatAmountArgs';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $currency, $locale } from 'src/stores/sessionStore/sessionStore';
 import { amountFormatter } from 'src/formatters/amount/amountFormatter';
 
 function FormatAmount({ amount }: Pick<FormatAmountArgs, 'amount'>) {
-  const [locale, currency] = useSessionStore(useShallow((state) => [state.locale, state.currency]));
+  const currency = useStore($currency);
+  const locale = useStore($locale);
   return amountFormatter.format({ amount, currency, locale });
 }
 

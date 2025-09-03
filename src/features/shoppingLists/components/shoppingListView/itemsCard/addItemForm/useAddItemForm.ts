@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
+import { useStore } from '@nanostores/react';
 import { useIntl } from 'react-intl';
 
 import type { ItemFormData } from '~shoppingLists/components/shoppingListView/listFormData';
-import { useSessionStore } from 'src/stores/sessionStore/sessionStore';
+import { $currency } from 'src/stores/sessionStore/sessionStore';
 
 function useAddItemForm({ addItem }: { addItem: (item: ItemFormData) => void }) {
   const formCtrl = useForm<ItemFormData>({ mode: 'onChange', defaultValues: getInitFormData() });
-  const currency = useSessionStore((state) => state.currency);
+  const currency = useStore($currency);
   const intl = useIntl();
 
   function getInitFormData(): ItemFormData {
