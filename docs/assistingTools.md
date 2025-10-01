@@ -9,7 +9,6 @@ ESLint provides the flexibility to customize its rules. For project dependencies
 - private modules within a feature cannot be imported outside that feature
 - relative imports are not allowed
 - default exports are not allowed
-- `axios` can only be imported from `axiosProvider`
 
 You can view the linting configuration [here](../eslint.config.js) and the formatting configuration [here](../.prettierrc.json).
 

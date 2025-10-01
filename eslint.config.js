@@ -65,10 +65,6 @@ export default tsEslint.config(
         {
           patterns: [
             {
-              group: ['axios'],
-              message: 'Please use axiosProvider.',
-            },
-            {
               group: ['**/./**', '**/../**', '!./*.scss'],
               message: 'Relative imports are not allowed.',
             },
