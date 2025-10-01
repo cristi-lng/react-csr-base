@@ -1,15 +1,18 @@
-import { FormattedMessage } from 'react-intl';
+import { useStore } from '@nanostores/react';
 
 import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import { $i18nMessages } from 'src/i18n/i18nMessages';
 import { ListCard } from '~shoppingLists/components/shoppingListsView/listCard/listCard';
 import { Button } from 'src/components/button/button';
 import classes from './shoppingListsView.module.scss';
 
 function ShoppingListsView({ shoppingLists }: { shoppingLists: ShoppingListOverview[] }) {
+  const i18nMessages = useStore($i18nMessages);
+
   return (
     <>
       {shoppingLists.length == 0 ? (
-        <FormattedMessage id="noShoppingList" />
+        i18nMessages.noShoppingList
       ) : (
         <div className={classes.shoppingListsView_lists}>
           {shoppingLists.map((list) => (
@@ -19,7 +22,7 @@ function ShoppingListsView({ shoppingLists }: { shoppingLists: ShoppingListOverv
       )}
       <div className={classes.shoppingListsView_addContainer}>
         <Button as="link" variant="primary" to="/shoppingLists/$id" params={{ id: 'new' }}>
-          <FormattedMessage id="addList" />
+          {i18nMessages.addList}
         </Button>
       </div>
     </>

@@ -7,7 +7,7 @@ import { Button } from 'src/components/button/button';
 import classes from './addItemForm.module.scss';
 
 function AddItemForm({ addItem }: { addItem: (item: ItemFormData) => void }) {
-  const { formCtrl, handleAddItem, currency, intl } = useAddItemForm({ addItem });
+  const { i18nMessages, currency, formCtrl, handleAddItem } = useAddItemForm({ addItem });
   const {
     register,
     handleSubmit,
@@ -18,20 +18,16 @@ function AddItemForm({ addItem }: { addItem: (item: ItemFormData) => void }) {
     <div className={classes.addItemForm}>
       <InputCheckbox {...register('purchased')} />
       <div className={classes.addItemForm_textInputs}>
+        <InputText placeholder={i18nMessages.name} invalid={!!errors.name} {...register('name', { required: true })} />
         <InputText
-          placeholder={intl.formatMessage({ id: 'name' })}
-          invalid={!!errors.name}
-          {...register('name', { required: true })}
-        />
-        <InputText
-          placeholder={intl.formatMessage({ id: 'quantity' })}
+          placeholder={i18nMessages.quantity}
           invalid={!!errors.quantity}
           {...register('quantity', { required: true })}
         />
         <InputTagged
           type="number"
           tag={currency}
-          placeholder={intl.formatMessage({ id: 'price' })}
+          placeholder={i18nMessages.price}
           invalid={!!errors.price}
           {...register('price', { required: true, min: 0, valueAsNumber: true })}
         />

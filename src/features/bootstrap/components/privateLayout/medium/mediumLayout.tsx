@@ -1,15 +1,18 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { FormattedMessage } from 'react-intl';
+import { useStore } from '@nanostores/react';
 import { Outlet, useMatches } from '@tanstack/react-router';
 
-import { sectionsService } from '~bootstrap/services/sectionsService';
+import { $i18nMessages } from 'src/i18n/i18nMessages';
 import { useAnimatedVisibility } from 'src/hooks/useAnimatedVisibility';
+import { sectionsService } from '~bootstrap/services/sectionsService';
 import { Navbar } from '~bootstrap/components/privateLayout/navbar/navbar';
 import { Toolbar } from '~bootstrap/components/privateLayout/toolbar/toolbar';
 import classes from './mediumLayout.module.scss';
 
 function MediumLayout() {
+  const i18nMessages = useStore($i18nMessages);
+  const matchedRoutes = useMatches();
   const {
     elementState: menuState,
     toggleElement: toggleMenu,
@@ -17,7 +20,6 @@ function MediumLayout() {
     afterElementAnimation: afterMenuAnimation,
   } = useAnimatedVisibility();
 
-  const matchedRoutes = useMatches();
   const currentSection = useMemo(() => sectionsService.findCurrentSection(matchedRoutes), [matchedRoutes]);
 
   return (
@@ -41,7 +43,7 @@ function MediumLayout() {
         {currentSection && (
           <div className={classes.mediumLayout_currentSection}>
             <span className={currentSection.icon} />
-            <FormattedMessage id={currentSection.label} />
+            {i18nMessages[currentSection.label]}
           </div>
         )}
         <button className={classes.mediumLayout_menuToggle} type="button" onClick={toggleMenu}>
