@@ -1,28 +1,28 @@
+import { httpClient } from 'src/api/httpClientProvider';
 import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
-import { axios } from 'src/api/axiosProvider';
 
 class ShoppingListsApi {
   async getShoppingLists() {
-    const { data } = await axios.get<ShoppingListOverview[]>('/shoppingLists/overview');
+    const { data } = await httpClient.get<ShoppingListOverview[]>('/shoppingLists/overview');
     return data;
   }
 
   async getShoppingList(id: string) {
-    const { data } = await axios.get<ShoppingListDetails>(`/shoppingLists/${id}`);
+    const { data } = await httpClient.get<ShoppingListDetails>(`/shoppingLists/${id}`);
     return data;
   }
 
   createShoppingList(payload: Omit<ShoppingListDetails, 'id'>) {
-    return axios.post('/shoppingLists', payload);
+    return httpClient.post('/shoppingLists', payload);
   }
 
   updateShoppingList(id: string, payload: Omit<ShoppingListDetails, 'id'>) {
-    return axios.put(`/shoppingLists/${id}`, payload);
+    return httpClient.put(`/shoppingLists/${id}`, payload);
   }
 
   deleteShoppingList(id: string) {
-    return axios.delete(`/shoppingLists/${id}`);
+    return httpClient.delete(`/shoppingLists/${id}`);
   }
 }
 
