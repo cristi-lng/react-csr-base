@@ -1,16 +1,18 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { FormattedMessage } from 'react-intl';
+import { useStore } from '@nanostores/react';
 import { Link, useMatches } from '@tanstack/react-router';
 
+import { $i18nMessages } from 'src/i18n/i18nMessages';
 import { sectionsService } from '~bootstrap/services/sectionsService';
 import logo from 'src/assets/images/shoppy-logo.svg';
 import classes from './navbar.module.scss';
 
 function Navbar({ hideMenu }: { hideMenu?: () => void }) {
-  const sections = sectionsService.getSections();
-
+  const i18nMessages = useStore($i18nMessages);
   const matchedRoutes = useMatches();
+
+  const sections = sectionsService.getSections();
   const currentSection = useMemo(() => sectionsService.findCurrentSection(matchedRoutes), [matchedRoutes]);
 
   return (
@@ -29,7 +31,7 @@ function Navbar({ hideMenu }: { hideMenu?: () => void }) {
               onClick={() => hideMenu?.()}
             >
               <span className={section.icon} />
-              <FormattedMessage id={section.label} />
+              {i18nMessages[section.label]}
             </Link>
           </li>
         ))}

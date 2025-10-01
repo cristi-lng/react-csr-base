@@ -28,13 +28,4 @@
     margin: var(--space-light-md) 0;
     border-top: 1px solid var(--color-neutral-weak-20);
   }
-
-  & a {
-    color: var(--color-primary-base);
-
-    &:hover {
-      text-decoration: underline;
-      color: var(--color-primary-strong-10);
-    }
-  }
 }

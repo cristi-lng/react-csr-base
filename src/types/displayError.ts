@@ -1,14 +1,13 @@
+import type { I18nMessageKey } from 'src/i18n/i18nMessages';
+
 /**
  * Error to be displayed by the error boundary
- *
- * @param title - i18n key or message
- * @param details - i18n key or message
  */
 class DisplayError extends Error {
-  title: string;
-  details?: string;
+  title: I18nMessageKey;
+  details?: I18nMessageKey;
 
-  constructor({ title, details }: { title: string; details?: string }) {
+  constructor({ title, details }: { title: I18nMessageKey; details?: I18nMessageKey }) {
     super();
     this.title = title;
     this.details = details;

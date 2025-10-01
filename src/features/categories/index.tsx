@@ -10,7 +10,7 @@ const categoriesRoute = createRoute({
     underSection: 'categories',
   },
   loader: () => {
-    throw new DisplayError({ title: 'specificError.title', details: 'specificError.details' });
+    throw new DisplayError({ title: 'specificErrorTitle', details: 'specificErrorDetails' });
   },
   component: () => <>Not yet implemented</>,
 });

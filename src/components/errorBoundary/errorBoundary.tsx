@@ -1,34 +1,35 @@
-import type { ReactNode } from 'react';
+import { useStore } from '@nanostores/react';
 import classNames from 'classnames';
-import { FormattedMessage } from 'react-intl';
 
+import { $i18nMessages } from 'src/i18n/i18nMessages';
 import { DisplayError } from 'src/types/displayError';
-import { SUPPORT_EMAIL } from 'src/constants/constants';
 import classes from './errorBoundary.module.scss';
 
 function ErrorBoundary({ error }: { error: Error }) {
-  const title = error instanceof DisplayError ? error.title : 'genericError.title';
-  const details = error instanceof DisplayError ? error.details : 'genericError.details';
+  const i18nMessages = useStore($i18nMessages);
+  const { title, details } = getErrorMessages();
 
-  function renderContactLink(children: ReactNode[]) {
-    return <a href={`mailto:${SUPPORT_EMAIL}`}>{children}</a>;
+  function getErrorMessages() {
+    if (error instanceof DisplayError) {
+      return {
+        title: i18nMessages[error.title],
+        details: error.details ? i18nMessages[error.details] : undefined,
+      };
+    } else {
+      return {
+        title: i18nMessages.genericErrorTitle,
+        details: i18nMessages.genericErrorDetails,
+      };
+    }
   }
 
   return (
     <div className={classes.errorBoundary}>
       <span className={classNames(classes.errorBoundary_icon, 'icon-error')} />
-      <div className={classes.errorBoundary_title}>
-        <FormattedMessage id={title} defaultMessage={title} />
-      </div>
-      {details && (
-        <div className={classes.errorBoundary_details}>
-          <FormattedMessage id={details} defaultMessage={details} />
-        </div>
-      )}
+      <div className={classes.errorBoundary_title}>{title}</div>
+      {details && <div className={classes.errorBoundary_details}>{details}</div>}
       <div className={classes.errorBoundary_separator}></div>
-      <div>
-        <FormattedMessage id="genericError.contact" values={{ a: renderContactLink }} />
-      </div>
+      <div>{i18nMessages.genericErrorContact}</div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { FormProvider } from 'react-hook-form';
-import { FormattedMessage } from 'react-intl';
 
 import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
 import { useShoppingListView } from '~shoppingLists/components/shoppingListView/useShoppingListView';
@@ -9,7 +8,7 @@ import { Button } from 'src/components/button/button';
 import classes from './shoppingListView.module.scss';
 
 function ShoppingListView({ shoppingList }: { shoppingList: ShoppingListDetails | null }) {
-  const { formCtrl, handleSaveList } = useShoppingListView({ shoppingList });
+  const { i18nMessages, formCtrl, handleSaveList } = useShoppingListView({ shoppingList });
   const { handleSubmit } = formCtrl;
 
   return (
@@ -20,10 +19,10 @@ function ShoppingListView({ shoppingList }: { shoppingList: ShoppingListDetails 
 
         <div className={classes.shoppingListView_buttons}>
           <Button variant="primary" type="submit">
-            <FormattedMessage id="save" />
+            {i18nMessages.save}
           </Button>
           <Button as="link" variant="neutral" to="/">
-            <FormattedMessage id="cancel" />
+            {i18nMessages.cancel}
           </Button>
         </div>
       </form>
