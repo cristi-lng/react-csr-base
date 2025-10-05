@@ -1,0 +1,37 @@
+import { Link } from '@tanstack/react-router';
+
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+import { FormattedDate } from 'src/formatters/date/formattedDate';
+import { ProgressBar } from 'src/components/progressBar/progressBar';
+import { FormattedAmount } from 'src/formatters/amount/formattedAmount';
+import { ListActions } from '~shoppingLists/components/shoppingListsPage/listCard/listActions';
+import classes from './listCard.module.scss';
+
+function ListCard({ list }: { list: ShoppingListOverview }) {
+  return (
+    <Link className={classes.listCard} to="/shoppingLists/$id" params={{ id: list.id }}>
+      <div className={classes.listCard_info}>
+        <div className={classes.listCard_name}>{list.name}</div>
+        {list.dueDate && (
+          <div className={classes.listCard_dueDate}>
+            <FormattedDate date={list.dueDate} />
+          </div>
+        )}
+        {list.category && <div className={classes.listCard_category}>{list.category}</div>}
+      </div>
+
+      <div className={classes.listCard_stats}>
+        <ProgressBar current={list.stats.totalItems - list.stats.remainingItems} max={list.stats.totalItems} />
+        <div className={classes.listCard_remainingAmount}>
+          <FormattedAmount amount={list.stats.remainingAmount} />
+        </div>
+      </div>
+
+      <div onClick={(event) => event.preventDefault()}>
+        <ListActions list={list} />
+      </div>
+    </Link>
+  );
+}
+
+export { ListCard };

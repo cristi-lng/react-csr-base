@@ -13,4 +13,4 @@ function QueryProvider({ children }: PropsWithChildren) {
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }
 
-export { QueryProvider, queryClient };
+export { queryClient, QueryProvider };

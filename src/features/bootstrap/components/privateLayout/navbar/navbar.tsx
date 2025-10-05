@@ -4,16 +4,16 @@ import { useStore } from '@nanostores/react';
 import { Link, useMatches } from '@tanstack/react-router';
 
 import { $i18nMessages } from 'src/i18n/i18nMessages';
-import { sectionsService } from '~bootstrap/services/sectionsService';
+import { findCurrentSection } from '~bootstrap/services/sectionsService';
 import logo from 'src/assets/images/shoppy-logo.svg';
+import { SECTIONS } from 'src/constants/constants';
 import classes from './navbar.module.scss';
 
 function Navbar({ hideMenu }: { hideMenu?: () => void }) {
   const i18nMessages = useStore($i18nMessages);
   const matchedRoutes = useMatches();
 
-  const sections = sectionsService.getSections();
-  const currentSection = useMemo(() => sectionsService.findCurrentSection(matchedRoutes), [matchedRoutes]);
+  const currentSection = useMemo(() => findCurrentSection(matchedRoutes), [matchedRoutes]);
 
   return (
     <div className={classes.navbar}>
@@ -23,7 +23,7 @@ function Navbar({ hideMenu }: { hideMenu?: () => void }) {
       </Link>
 
       <ul>
-        {sections.map((section) => (
+        {SECTIONS.map((section) => (
           <li key={section.name}>
             <Link
               {...section.link}

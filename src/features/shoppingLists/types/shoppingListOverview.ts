@@ -10,4 +10,4 @@ type ShoppingListOverview = {
   };
 };
 
-export { type ShoppingListOverview };
+export type { ShoppingListOverview };

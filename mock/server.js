@@ -1,29 +1,26 @@
 import jsonServer from 'json-server';
 
-class Server {
-  constructor({ port, delayInterval }) {
-    const server = jsonServer.create();
-    const router = jsonServer.router('db.json');
+function startServer({ port, delayInterval }) {
+  const server = jsonServer.create();
+  const router = jsonServer.router('db.json');
 
-    server.use((req, res, next) => this.#delayMiddleware(delayInterval, next));
+  server.use((_req, _res, next) => delayMiddleware(next));
+  // custom route
+  server.get('/shoppingLists/overview', (_req, res) => {
+    const shoppingLists = router.db.get('shoppingLists').value();
+    res.json(buildShoppingListsOverview(shoppingLists));
+  });
 
-    // custom routes
-    server.get('/shoppingLists/overview', (req, res) => {
-      const shoppingLists = router.db.get('shoppingLists').value();
-      res.json(this.#buildShoppingListsOverview(shoppingLists));
-    });
+  server.use(jsonServer.defaults());
+  server.use(router);
+  server.listen(port, () => console.log(`Mock server started on port ${port}`));
 
-    server.use(jsonServer.defaults());
-    server.use(router);
-    server.listen(port, () => console.log(`Mock server started on port ${port}`));
-  }
-
-  #delayMiddleware(delayInterval, next) {
+  function delayMiddleware(next) {
     const randomDelay = Math.floor(Math.random() * (delayInterval[1] - delayInterval[0] + 1)) + delayInterval[0];
     setTimeout(() => next(), randomDelay);
   }
 
-  #buildShoppingListsOverview(shoppingLists) {
+  function buildShoppingListsOverview(shoppingLists) {
     return shoppingLists.map((shoppingList) => {
       const { items, ...rest } = shoppingList;
       const stats = items.reduce(
@@ -42,4 +39,4 @@ class Server {
   }
 }
 
-new Server({ port: 5001, delayInterval: [500, 1000] });
+startServer({ port: 5001, delayInterval: [500, 1000] });

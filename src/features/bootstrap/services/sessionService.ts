@@ -1,5 +1,5 @@
+import { getAccount } from '~bootstrap/api/accountApi';
 import type { Account } from 'src/types/account';
-import { accountApi } from '~bootstrap/api/accountApi';
 import { $account, $currency, $locale } from 'src/stores/sessionStore/sessionStore';
 
 /**
@@ -11,18 +11,17 @@ import { $account, $currency, $locale } from 'src/stores/sessionStore/sessionSto
  *    - storing the user data in the session store
  *    - etc.
  */
-class SessionService {
-  async loadSession() {
-    const account = await accountApi.getAccount();
-    this.processAccount(account);
-    return {};
-  }
 
-  processAccount(account: Account) {
-    $locale.set(account.locale);
-    $currency.set(account.currency);
-    $account.set(account);
-  }
+async function loadSession() {
+  const account = await getAccount();
+  processAccount(account);
+  return {};
 }
 
-export const sessionService = new SessionService();
+function processAccount(account: Account) {
+  $locale.set(account.locale);
+  $currency.set(account.currency);
+  $account.set(account);
+}
+
+export { loadSession, processAccount };

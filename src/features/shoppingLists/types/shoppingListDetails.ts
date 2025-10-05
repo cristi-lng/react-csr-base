@@ -13,4 +13,13 @@ type ShoppingListItem = {
   readonly purchased: boolean;
 };
 
-export { type ShoppingListDetails, type ShoppingListItem };
+type ShoppingListStats = {
+  remainingAmount: number;
+  remainingItems: number;
+  paidAmount: number;
+  paidItems: number;
+  totalAmount: number;
+  totalItems: number;
+};
+
+export type { ShoppingListDetails, ShoppingListItem, ShoppingListStats };

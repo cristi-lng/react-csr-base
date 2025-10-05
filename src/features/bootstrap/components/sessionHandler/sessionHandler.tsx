@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { specialKeys } from 'src/stores/queryKeys/specialKeys';
-import { sessionService } from '~bootstrap/services/sessionService';
+import { loadSession } from '~bootstrap/services/sessionService';
 import { ErrorBoundary } from 'src/components/errorBoundary/errorBoundary';
 import classes from './sessionHandler.module.scss';
 
@@ -15,7 +15,7 @@ import classes from './sessionHandler.module.scss';
 function SessionHandler({ children }: { children: ReactNode }) {
   const { isPending, error } = useQuery({
     queryKey: specialKeys.sessionInfo,
-    queryFn: () => sessionService.loadSession(),
+    queryFn: () => loadSession(),
   });
 
   return isPending ? null : (

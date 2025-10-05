@@ -1,0 +1,49 @@
+import { render, screen, within } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
+
+import { LinkMock } from 'src/testing/linkMock';
+import * as shoppingListsApi from '~shoppingLists/api/shoppingListsApi';
+import { ShoppingListsPage } from '~shoppingLists/components/shoppingListsPage/shoppingListsPage';
+import { createComponentWrapper } from 'src/testing/componentWrapper';
+import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
+
+vi.mock('@tanstack/react-router', () => ({
+  Link: LinkMock,
+}));
+vi.mock('~shoppingLists/api/shoppingListsApi');
+
+describe('shopping lists page component', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('a message when there are no shopping lists', async () => {
+    vi.mocked(shoppingListsApi).getShoppingLists.mockResolvedValue([]);
+    render(<ShoppingListsPage />, { wrapper: createComponentWrapper() });
+
+    await screen.findByText(/you don't have any shopping list/i);
+
+    const addListLink = await screen.findByRole('link');
+    expect(addListLink).toHaveTextContent(/add list/i);
+    expect(addListLink).toHaveAttribute('href', '/shoppingLists/new');
+  });
+
+  it('a link for every shopping list', async () => {
+    const lists: ShoppingListOverview[] = [
+      { id: '1', name: 'List1', stats: { remainingAmount: 111, remainingItems: 3, totalItems: 5 } },
+      { id: '2', name: 'List2', stats: { remainingAmount: 0, remainingItems: 0, totalItems: 6 } },
+    ];
+    vi.mocked(shoppingListsApi).getShoppingLists.mockResolvedValue(lists);
+    render(<ShoppingListsPage />, { wrapper: createComponentWrapper() });
+
+    for (const [index, list] of lists.entries()) {
+      const listLink = await screen.findByRole('link', { name: new RegExp(list.name) });
+      expect(listLink).toHaveAttribute('href', `/shoppingLists/${list.id}`);
+      expect(listLink).toHaveTextContent(new RegExp(list.stats.remainingAmount.toString()));
+
+      await userEvent.click(within(listLink).getByRole('button'));
+      await userEvent.click(within(listLink).getByText(/delete/i));
+      expect(shoppingListsApi.deleteShoppingList).toHaveBeenCalledTimes(index + 1);
+    }
+  });
+});

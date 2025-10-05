@@ -5,7 +5,7 @@ import { Outlet, useMatches } from '@tanstack/react-router';
 
 import { $i18nMessages } from 'src/i18n/i18nMessages';
 import { useAnimatedVisibility } from 'src/hooks/useAnimatedVisibility';
-import { sectionsService } from '~bootstrap/services/sectionsService';
+import { findCurrentSection } from '~bootstrap/services/sectionsService';
 import { Navbar } from '~bootstrap/components/privateLayout/navbar/navbar';
 import { Toolbar } from '~bootstrap/components/privateLayout/toolbar/toolbar';
 import classes from './mediumLayout.module.scss';
@@ -20,7 +20,7 @@ function MediumLayout() {
     afterElementAnimation: afterMenuAnimation,
   } = useAnimatedVisibility();
 
-  const currentSection = useMemo(() => sectionsService.findCurrentSection(matchedRoutes), [matchedRoutes]);
+  const currentSection = useMemo(() => findCurrentSection(matchedRoutes), [matchedRoutes]);
 
   return (
     <div className={classes.mediumLayout}>
