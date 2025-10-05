@@ -4,9 +4,9 @@
 
 When a client-side application is first loaded, the initial HTML is often empty. This happens because the JavaScript, CSS, and other resources required to render the page haven’t been fetched yet, resulting in a poor user experience. To address this, we can include a content loading placeholder, which provides visual feedback while the resources are being loaded.
 
-For this approach to be effective, the placeholder must be inlined directly into the HTML. It's crucial to keep the size of the resources used by the placeholder as small as possible; otherwise, it defeats the purpose of improving the loading experience.
+For this approach to be effective, the loader must be inlined directly into the HTML. It's crucial to keep the size of the resources used by the loader as small as possible; otherwise, it defeats the purpose of improving the loading experience.
 
-You can see the loading placeholder in action at the beginning of the demo video on the homepage. For the code implementation, refer to the markup in [`index.html`](../src/index.html) and the associated CSS in [`contentPlaceholder.scss`](../src/styles/contentPlaceholder.scss). Keep in mind that during development mode, the placeholder resources are not inlined in the HTML. To see them inlined, you’ll need to generate the production build.
+You can see the loading placeholder in action at the beginning of the demo video on the homepage. For the code implementation, refer to the markup in [`index.html`](../src/index.html) and the associated CSS in [`initialLoader.scss`](../src/styles/initialLoader.scss). Keep in mind that during development mode, the loader resources are not inlined in the HTML. To see them inlined, you’ll need to generate the production build.
 
 ## Variable fonts
 

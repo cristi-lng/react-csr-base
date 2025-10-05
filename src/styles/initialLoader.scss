@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+#root:not(:empty) + .initialLoader_gw2ni {
+  display: none;
+}
+
+.initialLoader_gw2ni {
+  position: relative;
+  display: flex;
+  min-width: var(--size-width-xs);
+  max-width: var(--size-width-xl);
+  gap: var(--space-light-md);
+  padding: var(--space-light-md);
+  margin: auto;
+  overflow: hidden;
+  @include full-page-height;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(
+      -45deg,
+      transparent 40%,
+      color-mix(in srgb, var(--color-neutral-weak-max), transparent 50%),
+      transparent 60%
+    );
+    background-size: 300%;
+    animation: shine_gw2ni 1s infinite;
+
+    @keyframes shine_gw2ni {
+      0% {
+        background-position-x: 100%;
+      }
+
+      100% {
+        background-position-x: 0%;
+      }
+    }
+  }
+}
+
+.initialLoader_navbar_gw2ni {
+  display: none;
+}
+
+.initialLoader_body_gw2ni {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 1;
+  gap: var(--space-light-md);
+}
+
+.initialLoader_toolbar_gw2ni {
+  height: var(--space-heavy-md);
+  background-color: var(--color-neutral-weak-30);
+}
+
+.initialLoader_main_gw2ni {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  background-color: var(--color-neutral-weak-30);
+}
+
+.initialLoader_logoContainer_gw2ni {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-heavy-xl);
+  height: var(--space-heavy-xl);
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, var(--color-neutral-weak-max), var(--color-neutral-weak-30));
+  box-shadow:
+    0px 1px 6px var(--color-neutral-weak-10),
+    inset 0px 2px 3px var(--color-neutral-weak-max);
+}
+
+.initialLoader_logo_gw2ni {
+  width: 50%;
+}
+
+@media #{$media-md-above} {
+  .initialLoader_navbar_gw2ni {
+    display: flex;
+    width: min(33%, var(--size-width-xs));
+    background-color: var(--color-neutral-weak-30);
+  }
+
+  .initialLoader_body_gw2ni {
+    flex-direction: column;
+  }
+
+  .initialLoader_toolbar_gw2ni {
+    height: var(--space-heavy-xl);
+  }
+}

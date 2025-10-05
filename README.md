@@ -89,7 +89,7 @@ If you're planning to build your next application using this project, this secti
     - If you have a dedicated backend, delete the `mock` folder
     - If not, modify the mock data to suit your needs
 - **Update project essentials**
-  - Update `index.html` to reflect your brand (favicon, fonts, content placeholder)
+  - Update `index.html` to reflect your brand (favicon, fonts, initial loader)
   - Adjust `app.tsx`:
     - This is the root component of the React app
     - It initializes key dependencies (TanStack Query, internationalization, router)

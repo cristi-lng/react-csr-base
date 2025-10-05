@@ -4,7 +4,7 @@ import { routeTree } from 'src/router/routesConfig';
 import { Loading } from 'src/components/loading/loading';
 import { ErrorBoundary } from 'src/components/errorBoundary/errorBoundary';
 import { NotFound } from 'src/components/notFound/notFound';
-import type { SectionName } from '~bootstrap';
+import type { SectionName } from 'src/types/section';
 
 /**
  * This is the place to configure tanstack router.
@@ -37,4 +37,4 @@ function RouterProvider() {
   return <TanstackRouterProvider router={router} />;
 }
 
-export { RouterProvider, router };
+export { router, RouterProvider };

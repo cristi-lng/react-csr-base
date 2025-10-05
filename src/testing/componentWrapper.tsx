@@ -1,12 +1,17 @@
 import type { PropsWithChildren } from 'react';
-
-import { QueryProvider } from 'src/api/queryProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 /**
- * The minimum wrapper needed to test a component
+ * Create the minimum wrapper needed to test a component
  */
-function ComponentWrapper({ children }: PropsWithChildren) {
-  return <QueryProvider>{children}</QueryProvider>;
+function createComponentWrapper() {
+  const queryClient = new QueryClient();
+
+  function ComponentWrapper({ children }: PropsWithChildren) {
+    return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  }
+
+  return ComponentWrapper;
 }
 
-export { ComponentWrapper };
+export { createComponentWrapper };

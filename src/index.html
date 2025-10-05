@@ -15,7 +15,7 @@
 
     <!-- We want to preload main fonts to avoid fallbacks and increase the perceived speed of the application -->
     <!--
-      I recommend you to use variable fonts if you need to support multiple styles for a family
+      I recommend using variable fonts if you need to support multiple styles within a font family
       https://web.dev/articles/variable-fonts
     -->
     <link
@@ -27,10 +27,10 @@
     />
     <link rel="preload" as="font" href="./assets/fonts/iconfont.woff2" type="font/woff2" crossorigin="crossorigin" />
 
-    <!-- We import the variable system here instead of global.scss, because we want to use it in content placeholder -->
+    <!-- We import the variable system here instead of global.scss to make variables available for the initial loader -->
     <style>
       @import url('./styles/varSystem/index.scss');
-      @import url('./styles/contentPlaceholder.scss');
+      @import url('./styles/initialLoader.scss');
     </style>
 
     <title>Shoppy</title>
@@ -40,17 +40,17 @@
     <div id="root"></div>
 
     <!-- 
-      We display the content placeholder whenever the root div is empty.
-      This is particularly important at initial page load to see something as soon as possible.
-      The user will see this placeholder until the app is loaded. It's a bad UX to force the user to stare at an empty page.
+      We display the initial loader whenever the root div is empty.
+      The user will see it until the app is loaded.
+      It's a bad UX to force the user to stare at an empty page.
     -->
-    <div class="contentPlaceholder_gw2ni">
-      <div class="contentPlaceholder_navbar_gw2ni"></div>
-      <div class="contentPlaceholder_body_gw2ni">
-        <div class="contentPlaceholder_toolbar_gw2ni"></div>
-        <div class="contentPlaceholder_main_gw2ni">
-          <div class="contentPlaceholder_logoContainer_gw2ni">
-            <img class="contentPlaceholder_logo_gw2ni" src="./assets/images/shoppy-logo.svg" />
+    <div class="initialLoader_gw2ni">
+      <div class="initialLoader_navbar_gw2ni"></div>
+      <div class="initialLoader_body_gw2ni">
+        <div class="initialLoader_toolbar_gw2ni"></div>
+        <div class="initialLoader_main_gw2ni">
+          <div class="initialLoader_logoContainer_gw2ni">
+            <img class="initialLoader_logo_gw2ni" src="./assets/images/shoppy-logo.svg" />
           </div>
         </div>
       </div>
