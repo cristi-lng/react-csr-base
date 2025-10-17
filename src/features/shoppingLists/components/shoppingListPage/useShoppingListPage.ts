@@ -5,7 +5,7 @@ import { useSuspenseQuery, useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { $i18nMessages } from 'src/i18n/i18nMessages';
-import { shoppingListRoute } from '~shoppingLists';
+import { Route } from 'src/router/routes/shoppingLists/$id';
 import { getShoppingListOptions } from '~shoppingLists/api/shoppingListsQueries';
 import type { ListFormData } from '~shoppingLists/components/shoppingListPage/listFormTypes';
 import type { ShoppingListDetails } from '~shoppingLists/types/shoppingListDetails';
@@ -17,7 +17,7 @@ function useShoppingListPage() {
   const i18nMessages = useStore($i18nMessages);
   const navigate = useNavigate();
 
-  const { id: shoppingListId } = shoppingListRoute.useParams();
+  const { id: shoppingListId } = Route.useParams();
   const { data: shoppingList } = useSuspenseQuery(getShoppingListOptions(shoppingListId));
 
   const initFormData = useMemo(() => buildInitFormData(shoppingList), [shoppingList]);

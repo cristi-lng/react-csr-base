@@ -1,5 +1,7 @@
 import type { PluginOption } from 'vite';
+import path from 'path';
 import checker from 'vite-plugin-checker';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react-swc';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
@@ -15,6 +17,19 @@ function createChecker() {
     typescript: true,
     eslint: { useFlatConfig: true, lintCommand: 'eslint .' },
     overlay: { initialIsOpen: 'error' },
+  });
+}
+
+/**
+ * Create the TanStack Router plugin that enables file-based routing
+ * https://tanstack.com/router/v1/docs/framework/react/routing/installation-with-vite
+ */
+function createTanstackRouter() {
+  return tanstackRouter({
+    routesDirectory: path.resolve('src/router/routes'),
+    generatedRouteTree: path.resolve('src/router/routeTree.gen.ts'),
+    target: 'react',
+    autoCodeSplitting: true,
   });
 }
 
@@ -41,4 +56,4 @@ function moveJsCssToBody(): PluginOption {
   };
 }
 
-export default [createChecker(), react(), moveJsCssToBody(), ViteMinifyPlugin()];
+export default [createChecker(), createTanstackRouter(), react(), moveJsCssToBody(), ViteMinifyPlugin()];
