@@ -1,14 +1,5 @@
-import { createRoute } from '@tanstack/react-router';
+function SettingsPage() {
+  return <>Not yet implemented</>;
+}
 
-import { layoutRoute } from '~bootstrap';
-
-const settingsRoute = createRoute({
-  getParentRoute: () => layoutRoute,
-  path: '/settings',
-  staticData: {
-    underSection: 'settings',
-  },
-  component: () => <>Not yet implemented</>,
-});
-
-export { settingsRoute };
+export { SettingsPage };

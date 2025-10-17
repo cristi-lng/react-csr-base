@@ -1,6 +1,6 @@
 import { createRouter, RouterProvider as TanstackRouterProvider } from '@tanstack/react-router';
 
-import { routeTree } from 'src/router/routesConfig';
+import { routeTree } from 'src/router/routeTree.gen';
 import { Loading } from 'src/components/loading/loading';
 import { ErrorBoundary } from 'src/components/errorBoundary/errorBoundary';
 import { NotFound } from 'src/components/notFound/notFound';

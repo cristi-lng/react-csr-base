@@ -1,14 +1,5 @@
-import { createRoute } from '@tanstack/react-router';
+function ProductsPage() {
+  return <>Not yet implemented</>;
+}
 
-import { layoutRoute } from '~bootstrap';
-
-const productsRoute = createRoute({
-  getParentRoute: () => layoutRoute,
-  path: '/products',
-  staticData: {
-    underSection: 'products',
-  },
-  component: () => <>Not yet implemented</>,
-});
-
-export { productsRoute };
+export { ProductsPage };

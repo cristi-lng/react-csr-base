@@ -1,18 +1,11 @@
-import { createRoute } from '@tanstack/react-router';
-
-import { layoutRoute } from '~bootstrap';
 import { DisplayError } from 'src/types/displayError';
 
-const categoriesRoute = createRoute({
-  getParentRoute: () => layoutRoute,
-  path: '/categories',
-  staticData: {
-    underSection: 'categories',
-  },
-  loader: () => {
-    throw new DisplayError({ title: 'specificErrorTitle', details: 'specificErrorDetails' });
-  },
-  component: () => <>Not yet implemented</>,
-});
+function categoriesPageLoader() {
+  throw new DisplayError({ title: 'specificErrorTitle', details: 'specificErrorDetails' });
+}
 
-export { categoriesRoute };
+function CategoriesPage() {
+  return <>Not yet implemented</>;
+}
+
+export { categoriesPageLoader, CategoriesPage };
