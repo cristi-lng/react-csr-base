@@ -1,15 +1,10 @@
-import { render, screen, within } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
-import { LinkMock } from 'src/testing/linkMock';
 import * as shoppingListsApi from '~shoppingLists/api/shoppingListsApi';
-import { ShoppingListsPage } from '~shoppingLists/components/shoppingListsPage/shoppingListsPage';
-import { createComponentWrapper } from 'src/testing/componentWrapper';
+import { renderTestApp } from 'src/testing/renderTestApp';
 import type { ShoppingListOverview } from '~shoppingLists/types/shoppingListOverview';
 
-vi.mock('@tanstack/react-router', () => ({
-  Link: LinkMock,
-}));
 vi.mock('~shoppingLists/api/shoppingListsApi');
 
 describe('shopping lists page component', () => {
@@ -19,11 +14,13 @@ describe('shopping lists page component', () => {
 
   it('a message when there are no shopping lists', async () => {
     vi.mocked(shoppingListsApi).getShoppingLists.mockResolvedValue([]);
-    render(<ShoppingListsPage />, { wrapper: createComponentWrapper() });
+    renderTestApp({ initialLocation: '/' });
 
-    await screen.findByText(/you don't have any shopping list/i);
+    await screen.findByRole('heading', { name: /shopping lists/i });
 
-    const addListLink = await screen.findByRole('link');
+    screen.getByText(/you don't have any shopping list/i);
+
+    const addListLink = screen.getByRole('link');
     expect(addListLink).toHaveTextContent(/add list/i);
     expect(addListLink).toHaveAttribute('href', '/shoppingLists/new');
   });
@@ -34,10 +31,12 @@ describe('shopping lists page component', () => {
       { id: '2', name: 'List2', stats: { remainingAmount: 0, remainingItems: 0, totalItems: 6 } },
     ];
     vi.mocked(shoppingListsApi).getShoppingLists.mockResolvedValue(lists);
-    render(<ShoppingListsPage />, { wrapper: createComponentWrapper() });
+    renderTestApp({ initialLocation: '/' });
+
+    await screen.findByRole('heading', { name: /shopping lists/i });
 
     for (const [index, list] of lists.entries()) {
-      const listLink = await screen.findByRole('link', { name: new RegExp(list.name) });
+      const listLink = screen.getByRole('link', { name: new RegExp(list.name) });
       expect(listLink).toHaveAttribute('href', `/shoppingLists/${list.id}`);
       expect(listLink).toHaveTextContent(new RegExp(list.stats.remainingAmount.toString()));
 

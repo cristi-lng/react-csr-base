@@ -1,51 +1,28 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 
-import { LinkMock } from 'src/testing/linkMock';
 import type { ShoppingListDetails, ShoppingListItem } from '~shoppingLists/types/shoppingListDetails';
-import { ShoppingListView } from '~shoppingLists/components/shoppingListView/shoppingListView';
-import { ComponentWrapper } from 'src/testing/componentWrapper';
-import { shoppingListsApi } from '~shoppingLists/api/shoppingListsApi';
+import { renderTestApp } from 'src/testing/renderTestApp';
+import * as shoppingListsApi from '~shoppingLists/api/shoppingListsApi';
 
-vi.mock('@tanstack/react-router', () => ({
-  Link: LinkMock,
-  useNavigate: vi.fn(),
-}));
-vi.mock('~shoppingLists/api/shoppingListsApi', () => ({
-  shoppingListsApi: {
-    createShoppingList: vi.fn(),
-    updateShoppingList: vi.fn(),
-  },
-}));
+vi.mock('~shoppingLists/api/shoppingListsApi');
 
 type ListOnlyFields = Pick<ShoppingListDetails, 'name' | 'dueDate' | 'category'>;
 
-async function addItem(item: ShoppingListItem) {
-  const allCheckboxes = screen.getAllByRole('checkbox');
-  const allNameInputs = screen.getAllByPlaceholderText(/name/i);
-  const itemCheckbox = allCheckboxes[allCheckboxes.length - 1];
-  const itemNameInput = allNameInputs[allNameInputs.length - 1];
-  const itemQuantityInput = screen.getByPlaceholderText(/quantity/i);
-  const itemPriceInput = screen.getByPlaceholderText(/price/i);
+describe('shopping list page component', () => {
+  beforeEach(() => {
+    vi.mocked(shoppingListsApi).getShoppingLists.mockResolvedValue([]);
+  });
 
-  if (item.purchased) {
-    await userEvent.click(itemCheckbox);
-  }
-  await userEvent.type(itemNameInput, item.name);
-  await userEvent.type(itemQuantityInput, item.quantity);
-  await userEvent.type(itemPriceInput, item.price.toString());
-
-  await userEvent.click(screen.getByRole('button', { name: '+' }));
-}
-
-describe('shopping list view component', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
   it('create a new shopping list without items', async () => {
     const listFields: ListOnlyFields = { name: 'List1', dueDate: '2025-01-01', category: 'Cat1' };
-    render(<ShoppingListView shoppingList={null} />, { wrapper: ComponentWrapper });
+    renderTestApp({ initialLocation: '/shoppingLists/new' });
+
+    await screen.findByRole('heading', { name: /list details/i });
 
     const listNameInput = screen.getAllByPlaceholderText(/name/i)[0];
     const listDueDateInput = screen.getByPlaceholderText(/due date/i);
@@ -65,7 +42,9 @@ describe('shopping list view component', () => {
   it('create a new shopping list with items', async () => {
     const listFields: ListOnlyFields = { name: 'List1', dueDate: null, category: null };
     const item: ShoppingListItem = { name: 'Item1', quantity: '1', price: 111, purchased: true };
-    render(<ShoppingListView shoppingList={null} />, { wrapper: ComponentWrapper });
+    renderTestApp({ initialLocation: '/shoppingLists/new' });
+
+    await screen.findByRole('heading', { name: /list details/i });
 
     const listNameInput = screen.getAllByPlaceholderText(/name/i)[0];
     await userEvent.type(listNameInput, listFields.name);
@@ -81,9 +60,10 @@ describe('shopping list view component', () => {
     const listFields: ListOnlyFields = { name: 'List1', dueDate: null, category: null };
     const item1: ShoppingListItem = { name: 'Item1', quantity: '1', price: 111, purchased: true };
     const item2: ShoppingListItem = { name: 'Item2', quantity: '1', price: 222, purchased: false };
-    render(<ShoppingListView shoppingList={{ id: '1', ...listFields, items: [item1] }} />, {
-      wrapper: ComponentWrapper,
-    });
+    vi.mocked(shoppingListsApi).getShoppingList.mockResolvedValue({ id: '1', ...listFields, items: [item1] });
+    renderTestApp({ initialLocation: '/shoppingLists/1' });
+
+    await screen.findByRole('heading', { name: /list details/i });
 
     await addItem(item2);
     screen.getByText(/item1/i);
@@ -103,9 +83,10 @@ describe('shopping list view component', () => {
   it('update a shopping list and remove an item', async () => {
     const listFields: ListOnlyFields = { name: 'List1', dueDate: null, category: null };
     const item: ShoppingListItem = { name: 'Item1', quantity: '1', price: 111, purchased: true };
-    render(<ShoppingListView shoppingList={{ id: '1', ...listFields, items: [item] }} />, {
-      wrapper: ComponentWrapper,
-    });
+    vi.mocked(shoppingListsApi).getShoppingList.mockResolvedValue({ id: '1', ...listFields, items: [item] });
+    renderTestApp({ initialLocation: '/shoppingLists/1' });
+
+    await screen.findByRole('heading', { name: /list details/i });
 
     await userEvent.click(screen.getByRole('button', { name: /delete item/i }));
     screen.getByText(/there are no items in this shopping list/i);
@@ -114,4 +95,22 @@ describe('shopping list view component', () => {
     expect(shoppingListsApi.updateShoppingList).toHaveBeenCalledTimes(1);
     expect(shoppingListsApi.updateShoppingList).toHaveBeenCalledWith('1', { ...listFields, items: [] });
   });
+
+  async function addItem(item: ShoppingListItem) {
+    const allCheckboxes = screen.getAllByRole('checkbox');
+    const allNameInputs = screen.getAllByPlaceholderText(/name/i);
+    const itemCheckbox = allCheckboxes[allCheckboxes.length - 1];
+    const itemNameInput = allNameInputs[allNameInputs.length - 1];
+    const itemQuantityInput = screen.getByPlaceholderText(/quantity/i);
+    const itemPriceInput = screen.getByPlaceholderText(/price/i);
+
+    if (item.purchased) {
+      await userEvent.click(itemCheckbox);
+    }
+    await userEvent.type(itemNameInput, item.name);
+    await userEvent.type(itemQuantityInput, item.quantity);
+    await userEvent.type(itemPriceInput, item.price.toString());
+
+    await userEvent.click(screen.getByRole('button', { name: '+' }));
+  }
 });
