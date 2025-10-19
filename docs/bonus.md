@@ -1,6 +1,6 @@
 # Bonus
 
-## Initial loading
+## Initial loader
 
 When a client-side application is first loaded, the initial HTML is often empty. This happens because the JavaScript, CSS, and other resources required to render the page haven’t been fetched yet, resulting in a poor user experience. To address this, we can include a content loading placeholder, which provides visual feedback while the resources are being loaded.
 
@@ -15,13 +15,3 @@ In web applications, multiple font variants are often required, such as regular,
 Variable fonts offer a more efficient solution. A variable font is a single file that includes all the weights and styles supported by the font. While its size may be slightly larger than a single variant of a traditional font, it is significantly smaller when multiple variants are needed. Additionally, I recommend using the `WOFF2` format, as it provides the best compression and is widely supported across browsers.
 
 In this application, I’m using the [`Quicksand`](../src/assets/fonts/quicksand-variable.woff2) font. You can view the font declaration [here](../src/styles/fontDeclaration/quicksand.scss). Note that the font weight is specified as a range, reflecting its support for multiple weights.
-
-## Services as classes
-
-In this project, services are implemented using JavaScript classes, which contrasts with the functional approach used for components and hooks. I find classes to be a better fit for services, and here are some reasons behind this choice:
-
-- creating multiple instances of a service is simpler with classes when needed
-- it's more obvious which functions are public and which are private
-- it’s easier to identify the specific service being used when invoking its functions
-
-That said, if you prefer a consistent functional approach or dislike using classes, you don't have to follow this pattern. Services can be equally implemented using plain functions if that aligns better with your preferences.

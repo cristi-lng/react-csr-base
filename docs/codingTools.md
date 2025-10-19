@@ -25,11 +25,12 @@ In React, the two primary routing solutions are [React Router↗](https://reactr
 
 For this application, I have opted for TanStack Router due to its extensive features and higher level of customizability. However, you can replace it with React Router if you prefer.
 
-Here are the key application modules that demonstrate the router usage:
+These are the key files that show how the router brings everything together:
 
+- [File-based routing plugin](../build/plugins.ts)
 - [Router configuration](../src/router/routerProvider.tsx)
-- [Route tree](../src/router/routesConfig.tsx)
-- [Routes example](../src/features/shoppingLists/index.tsx)
+- [Generated route tree](../src/router/routeTree.gen.ts)
+- [File route example](../src/router/routes/shoppingLists/$id.tsx)
 
 ## Data fetching
 
@@ -39,13 +40,13 @@ Most applications need to fetch and work with data from a backend. Unfortunately
 - built-in data caching support
 - mechanisms for refreshing data
 
-[TanStack Query↗](https://tanstack.com/query/latest) is one of the most popular solutions, though alternatives like [SWR↗](https://swr.vercel.app/) are also available. In the shopping list application, I’ve chosen to use TanStack Query along with [Axios↗](https://axios-http.com/docs/intro). Below are key modules to help you understand how the system is integrated:
+[TanStack Query↗](https://tanstack.com/query/latest) is one of the most popular solutions, though alternatives like [SWR↗](https://swr.vercel.app/) are also available. In the shopping list application, I’ve chosen TanStack Query. Below are some key files that illustrate how it integrates into a JavaScript application:
 
-- [Axios configuration](../src/api/axiosProvider.ts)
+- [Http client](../src/api/httpClientProvider.ts)
 - [TanStack Query configuration](../src/api/queryProvider.tsx)
 - [API calls to the backend](../src/features/shoppingLists/api/shoppingListsApi.ts)
 - [Query options for the API calls](../src/features/shoppingLists/api/shoppingListsQueries.ts)
-- [Implementation within a page](../src/features/shoppingLists/pages/shoppingListsPage.tsx)
+- [Usage within a page](../src/features/shoppingLists/components/shoppingListsPage/shoppingListsPage.tsx)
 
 If you are interested in learning more about the architectural decisions, check out the following resources:
 
@@ -55,9 +56,11 @@ If you are interested in learning more about the architectural decisions, check 
 
 ## State management
 
-In React, we typically manage state using the `useState` hook. However, there are cases where we need to share this state across multiple components or make it accessible globally. In such scenarios, we need a different solution. React provides the [Context API↗](https://react.dev/reference/react/createContext), but there are also state management libraries like [Zustand↗](https://github.com/pmndrs/zustand), [Jotai↗](https://jotai.org/), and [Redux Toolkit↗](https://redux-toolkit.js.org/).
+In React, we typically manage state using the `useState` hook. However, there are cases where we need to share this state across multiple components or make it accessible globally. In such scenarios, we need a different solution. React provides the [Context API↗](https://react.dev/reference/react/createContext), but there are also state management libraries like [Nano Stores↗](https://github.com/nanostores/nanostores), [Zustand↗](https://github.com/pmndrs/zustand), [Jotai↗](https://jotai.org/), [Redux Toolkit↗](https://redux-toolkit.js.org/) and many more.
 
-Personally, I prefer Zustand. It’s lightweight, has a clean and straightforward API, works outside of React components, and has consistently provided a great experience. In this application, I used Zustand to store and expose session data. Below is an example of its usage:
+I’ve had great experiences with both Zustand and Nano Stores. Recently, I’ve been favoring Nano Stores due to its simpler API and smaller size. Both are solid choices, and a nice bonus is that they work outside React components too.
+
+Below is an example of Nano Stores in action in the codebase:
 
 - [Session store](../src/stores/sessionStore/sessionStore.ts)
 - [Account usage](../src/features/bootstrap/components/privateLayout/toolbar/profileDropdown.tsx)
@@ -68,16 +71,19 @@ Forms are a common feature on almost every website. While it's possible to manag
 
 I recommend using React Hook Form as it is the most popular and well-maintained option. Although it has a few quirks, it can save you a significant amount of time. Here's an example of a form implemented with this library:
 
-- [Form to add an item to the shopping list](../src/features/shoppingLists/components/shoppingListView/itemsCard/addItemForm/addItemForm.tsx)
-- [Custom hook for the add item form](../src/features/shoppingLists/components/shoppingListView/itemsCard/addItemForm/useAddItemForm.ts)
+- [Form to add an item to the shopping list](../src/features/shoppingLists/components/shoppingListPage/addItemForm/addItemForm.tsx)
+- [Custom hook for the add item form](../src/features/shoppingLists/components/shoppingListPage/addItemForm/useAddItemForm.ts)
 
 ## Internationalization
 
-To reach a broader audience, it’s important to translate your application’s content into multiple languages. The React ecosystem offers several tools to facilitate this. I chose [React Intl↗](https://formatjs.github.io/) because of my familiarity with it and the positive experiences I’ve had using it. Here’s how it was integrated into the project:
+Translating your application into multiple languages is key to reaching a wider audience. In the React ecosystem, there are several tools to help with this. I opted for [Nano Stores I18n↗](https://github.com/nanostores/i18n) since I was already using Nano Stores, and it’s lightweight, TypeScript-friendly, and lets you build custom transformations.
 
-- [App messages in english](../src/assets/i18n/i18n-en_US.json)
-- [Internationalization configuration](../src/i18n/i18nProvider.tsx)
-- [Messages usage example](../src/features/shoppingLists/components/shoppingListView/itemsCard/itemsStatsView/itemsStatsView.tsx)
+Here’s how it was integrated into the project:
+
+- [Internationalization configuration](../src/i18n/i18nProvider.ts)
+- [App messages in english](../src/i18n/i18nMessages.ts)
+- [App messages in other languages](../src/i18n/i18n-fr-FR.json)
+- [Usage example](../src/features/shoppingLists/components/shoppingListPage/listStatsView/listStatsView.tsx)
 
 ## Styling
 

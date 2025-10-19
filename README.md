@@ -8,7 +8,7 @@ Building a client-side application in React can be challenging. There are a lot 
 
 While exploring these tools, I realized the value of having a starter application. Admittedly, creating a universal starting point is difficult because every project is unique. However, I believe there are common patterns and features that most projects can benefit of. With this in mind, I created a repository to serve as a guideline for building my client-side applications. After working with this architecture for a while, I began to enjoy it. So I decided to share it with you. Hopefully it will benefit you as much as it has benefited me.
 
-If this approach doesn’t align with your preferences and you’re looking for something more official, I’d recommend exploring [Vite↗](https://vite.dev/), [Next.js↗](https://nextjs.org/), or [Remix↗](https://remix.run/). Vite offers an excellent template for React applications, though it only includes React itself. On the other hand, Next.js and Remix provide much broader functionality but are primarily designed for server-side rendering (SSR).
+If this approach doesn’t align with your preferences and you’re looking for something more official, I’d recommend exploring [Vite↗](https://vite.dev/), [Next.js↗](https://nextjs.org/), [React Router↗](https://reactrouter.com/), [Tanstack Start↗](https://tanstack.com/start/latest), or [RedwoodJS↗](https://rwsdk.com/). Each of these options has its own strengths and weaknesses, and the right choice largely depends on what you’re building.
 
 ## Overview
 
@@ -51,19 +51,23 @@ https://github.com/user-attachments/assets/fe08fa62-ec16-4dca-a73f-0db199621c04
   - [Integration tests](docs/testingTools.md#integration-tests)
   - [End-to-end tests](docs/testingTools.md#end-to-end-tests)
 - [Assisting tools](docs/assistingTools.md)
+  - [Package manager](docs/assistingTools.md#package-manager)
   - [Linting and formatting](docs/assistingTools.md#linting-and-formatting)
   - [Build](docs/assistingTools.md#build)
   - [Bundle splitting](docs/assistingTools.md#bundle-splitting)
   - [IDE](docs/assistingTools.md#ide)
 - [Bonus](docs/bonus.md)
-  - [Initial loading](docs/bonus.md#initial-loading)
+  - [Initial loader](docs/bonus.md#initial-loader)
   - [Variable fonts](docs/bonus.md#variable-fonts)
-  - [Services as classes](docs/bonus.md#services-as-classes)
 
 ## Installation
 
 Follow the steps below to install the application for development:
 
+- **Prerequisites**
+  - if you don’t already have `pnpm` installed, activate it by running:
+    - `corepack enable`
+    - `corepack prepare pnpm@latest --activate`
 - **Start the mock server**
   - open a terminal
   - go to the `mock` folder
@@ -92,7 +96,7 @@ If you're planning to build your next application using this project, this secti
   - Update `index.html` to reflect your brand (favicon, fonts, initial loader)
   - Adjust `app.tsx`:
     - This is the root component of the React app
-    - It initializes key dependencies (TanStack Query, internationalization, router)
+    - It initializes key dependencies (TanStack Query, TanStack Router)
     - Use this as a starting point to add or remove tools
 - **Organize the `features` folder**
   - Keep the `bootstrap`

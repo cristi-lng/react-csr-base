@@ -15,6 +15,7 @@ export default defineConfig({
     ],
   },
   publicDir: 'assets/public',
+  cacheDir: path.resolve('node_modules/.vite'),
   plugins,
   css: cssOptions,
   build: buildOptions,
