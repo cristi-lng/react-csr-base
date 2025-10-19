@@ -11,13 +11,13 @@ Unit tests validate the smallest unit of functionality, such as a piece of busin
 
 However, I don't think it is necessary to write unit tests for simple logic or basic components.
 
-For unit testing, I recommend using [Vitest↗](https://vitest.dev/) with [Testing Library↗](https://testing-library.com/). You can find an example in the source code [here](../src/features/shoppingLists/components/shoppingListView/listFormService.test.ts).
+For unit testing, I recommend using [Vitest↗](https://vitest.dev/) with [Testing Library↗](https://testing-library.com/). You can find an example in the source code [here](../src/features/shoppingLists/services/shoppingListStatsService.test.ts).
 
 ## Integration tests
 
-Integration tests verify how different parts of the application work together. I typically focus on testing larger components or entire pages, using a mocked backend and routing. Like unit tests, prioritize substantial and critical parts of the application rather than straightforward components.
+Integration tests verify how different parts of the application work together. I typically focus on testing larger components or entire pages, using a mocked backend. Like unit tests, prioritize substantial and critical parts of the application rather than straightforward components.
 
-The same tools used for unit testing (Vitest and Testing Library) can be employed for integration tests. An example from the application can be found [here](../src/features/shoppingLists/components/shoppingListView/shoppingListView.test.tsx).
+The same tools used for unit testing (Vitest and Testing Library) can be employed for integration tests. An example from the application can be found [here](../src/features/shoppingLists/components/shoppingListsPage/shoppingListsPage.test.tsx).
 
 ## End-to-end tests
 

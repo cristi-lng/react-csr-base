@@ -1,5 +1,13 @@
 # Assisting tools
 
+## Package manager
+
+To build the app, install dependencies, or run specific commands, you need a package manager. Think of it as the main way to interact with your app’s dependencies.
+
+There are a few popular options in the JavaScript world: [npm↗](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) (comes with Node.js by default), [yarn↗](https://yarnpkg.com/), [pnpm↗](https://pnpm.io/)
+
+For this project, I’ve chosen pnpm because it’s fast, lightweight, and handles dependencies efficiently. Please use pnpm when running commands in this project to make sure everything works smoothly.
+
 ## Linting and formatting
 
 Linting involves analyzing the source code to identify potential errors. Formatting, on the other hand, focuses on arranging the code according to style guides and conventions. In JavaScript, two widely used tools for these purposes are [ESLint↗](https://eslint.org/) and [Prettier↗](https://prettier.io/). Most frameworks and libraries you use will likely have an ESLint plugin that should be included in your project. It's highly recommended to use an IDE that supports these tools, enabling real-time linting and formatting.
@@ -28,7 +36,7 @@ You can find all the Vite configurations for this project [here](../build).
 
 In client-side applications, every new feature increases the size of the JavaScript bundle sent to the browser. This can result in slower load times and a heavier application, especially on slow networks. To address this, we typically split the production bundle into smaller pieces, delivering only the code needed at any given moment.
 
-Finding an effective splitting strategy is not trivial and largely depends on the specific requirements of the project. For the shopping list application, I adopted a page-based strategy—a common approach that creates a separate bundle for each page in the application. This was achieved by leveraging the features provided by the router. You can see an example of this strategy applied to the shopping list pages [here](../src/features/shoppingLists/index.tsx).
+Finding an effective splitting strategy is not trivial and largely depends on the specific requirements of the project. For the shopping list application, I adopted a page-based strategy—a common approach that creates a separate bundle for each page in the application. This was achieved by using the automatic splitting strategy provided by the router plugin. Checkout the configuration [here](../build/plugins.ts).
 
 If the page-based strategy does not meet your needs or you prefer a different approach, feel free to adjust it to better suit your requirements.
 

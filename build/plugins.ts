@@ -34,7 +34,7 @@ function createTanstackRouter() {
 }
 
 /**
- * Move JS and CSS imports in HTML to the end of the body
+ * Move JS and CSS imports from HTML to the end of the body
  *
  * This is done to avoid blocking the rendering of the index.html,
  * allowing the initial loader to be displayed immediately
