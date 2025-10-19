@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
  * Checks reactively if a css media query is satisfied or not
  */
 function useMatchMediaQuery(mediaQuery: string) {
-  const [isMatch, setIsMatch] = useState(matchMedia(mediaQuery).matches);
+  const [isMatch, setIsMatch] = useState(() => matchMedia(mediaQuery).matches);
 
   useEffect(() => {
     function onMatchChange(event: MediaQueryListEvent) {
