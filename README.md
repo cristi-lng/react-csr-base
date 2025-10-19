@@ -1,5 +1,7 @@
 # React CSR Base ⚙️
 
+> ⚠️ Note: This version, designed in 2025, uses **Axios**, **React-Intl**, and **Zustand**. Services are implemented using classes.
+
 Your **starting kit** for building **clean and extensible client-side applications** in React.
 
 ## Motivation
