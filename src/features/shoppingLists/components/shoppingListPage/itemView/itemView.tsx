@@ -13,7 +13,7 @@ type ItemViewProps = {
 
 function ItemView({ itemIndex, deleteItem }: ItemViewProps) {
   const { watch, register } = useFormContext<ListFormData>();
-  const item = watch(`items.${itemIndex}`);
+  const item = watch(`items.${itemIndex}`)!;
 
   return (
     <div className={classNames(classes.itemView, { [classes.purchased]: item.purchased })}>
